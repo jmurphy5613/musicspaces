@@ -21,7 +21,7 @@ export const getAccessToken = async (code: string | string[]) => {
     })
 }
 
-const getCode = (router: NextRouter) => {
+export const getCode = (router: NextRouter) => {
     return router.query.code
 }
 
