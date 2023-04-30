@@ -12,13 +12,8 @@ export const getAccessToken = async (code: string | string[]) => {
           code: code
         }
     }
-    axios(options)
-      .then(res => {
-        console.log(res)
-    })
-    .catch(err => {
-        console.log(err)
-    })
+    const res = await axios(options)
+    return res.data.response
 }
 
 export const getCode = (router: NextRouter) => {
@@ -31,6 +26,6 @@ export const auth = async (router: NextRouter) => {
     URL += "&response_type=code"
     URL += "&redirect_uri=" + "http://localhost:3000"
     URL += "&show_dialog=true"
-    URL += "&scope=user-read-private user-read-email"
+    URL += "&scope=user-read-private user-read-email user-top-read"
     router.push(URL);
 };

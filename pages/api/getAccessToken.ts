@@ -9,7 +9,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-
     const options = {
         url: 'https://accounts.spotify.com/api/token',
         method: 'POST',
@@ -28,6 +27,7 @@ export default async function handler(
         await axios(options)
         .then((res) => {
             result = res.data
+            console.log(res)
         })
         .catch((err) => {
             console.log('err', err)
