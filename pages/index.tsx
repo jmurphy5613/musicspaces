@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import styles from '../styles/Home.module.css'
 import NameModal from "../components/name-modal/NameModal";
 import { auth, getAccessToken } from "../utils/requests/auth";
+import Navbar from "../components/navbar/Navbar";
 
 export default function Home() {
     const router = useRouter();
@@ -27,13 +28,19 @@ export default function Home() {
     }, [router.isReady])
 
     return (
-        <div className={styles.container}>
-            <input />
-            <button className={styles.login} onClick={() => {
-                // setShowModal(true)
-                auth(router)
-            }}>Login</button>
-            {showModal && <NameModal />}
-        </div>
+        <>
+            <Navbar />
+            <div className={styles.container}>
+            
+            
+            
+                {/* <button className={styles.login} onClick={() => {
+                    // setShowModal(true)
+                    auth(router)
+                }}>Login</button>
+                {showModal && <NameModal />} */}
+            </div>
+        </>
+
     );
 }

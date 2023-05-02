@@ -1,0 +1,20 @@
+.container {
+    height: 10vh;
+    background-color: #12131e; 
+    display: flex;
+    align-items: center;
+}
+
+.left {
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    color: #A7B2FF;
+    font-size: 36px;
+    font-weight: 400;
+    font-family: 'Outfit', sans-serif;
+
+}
