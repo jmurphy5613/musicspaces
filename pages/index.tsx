@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css'
 import NameModal from "../components/name-modal/NameModal";
 import { auth, getAccessToken } from "../utils/requests/auth";
 import Navbar from "../components/navbar/Navbar";
+import Image from "next/image";
 
 export default function Home() {
     const router = useRouter();
@@ -31,7 +32,14 @@ export default function Home() {
         <>
             <Navbar />
             <div className={styles.container}>
-            
+                <div className={styles["background-images"]}>
+                    <Image 
+                        src='/Vector.svg'
+                        alt="vector"
+                        fill
+                    />
+                </div>
+
             
             
                 {/* <button className={styles.login} onClick={() => {
