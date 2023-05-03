@@ -5,6 +5,8 @@ import NameModal from "../components/name-modal/NameModal";
 import { auth, getAccessToken } from "../utils/requests/auth";
 import Navbar from "../components/navbar/Navbar";
 import Image from "next/image";
+import 'aos/dist/aos.css';
+import AOS from 'aos'
 
 export default function Home() {
     const router = useRouter();
@@ -19,6 +21,9 @@ export default function Home() {
 
 
     useEffect(() => {
+
+        AOS.init()
+
         //get code router parameter and send it to getAccessToken
         if (router.isReady) {
             const code = router.query.code;
@@ -50,8 +55,22 @@ export default function Home() {
                     </div>
 
                 </div>
+                <div className={styles["landing-text-container"]}>
+                    <h1 className={styles["landing-title"]} data-aos="fade-up">connect over music with your friends</h1>
+                    <h3 className={styles["landing-description"]} data-aos="fade-up" data-aos-delay="300">Discover new music, compare your tastes, and connect with friends.</h3>
+                    <button className={styles["spotify-login-button"]} data-aos="fade-up" data-aos-delay="600">
+                        <h2 className={styles["button-label"]}>Sign in</h2>
+                        <div className={styles["button-image-container"]}>
+                            <Image 
+                                src='/spotify-logo.svg'
+                                alt='spotify-logo'
+                                fill
+                            />
+                        </div>
 
-            
+                    </button>
+                </div>
+
             
                 {/* <button className={styles.login} onClick={() => {
                     // setShowModal(true)

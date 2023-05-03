@@ -4,7 +4,6 @@
     background-color: #12131e; 
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .login {
@@ -24,7 +23,7 @@
 
 .image-container {
     width: 35vw;
-    height: 75vh;
+    height: 100vh;
     position: relative;
 }
 
@@ -32,4 +31,68 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    position: absolute;
+}
+
+.landing-title {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 81px;
+    color: white;
+    z-index: 1;
+    width: 40%;
+    text-align: center;
+}
+
+.landing-description {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    width: 27%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.landing-text-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    z-index: 1;
+    padding-top: 3rem;
+}
+
+.spotify-login-button {
+    font-style: normal;
+    font-size: 16px;
+    line-height: 25px;
+    width: 10rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    background: #A7B2FF;
+    border-radius: 100px;
+    cursor: pointer;
+    border: none;
+    padding: 0.5rem;
+}
+
+.button-label {
+    width: 70%;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+}
+
+.button-image-container {
+    width: 30%;
+    height: 100%;
+    position: relative;
+
 }
