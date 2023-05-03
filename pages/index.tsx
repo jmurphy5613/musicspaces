@@ -19,6 +19,120 @@ export default function Home() {
         router.push('/profile')
     }
 
+    const items = [
+        {
+            username: 'asa',
+            image: '/demo-pfp.jpeg'
+        },
+        {
+            username: 'Cpfist',
+            image: '/demo-pfp2.jpeg'
+        },
+        {
+            username: 'asa',
+            image: '/demo-pfp.jpeg'
+        },
+        {
+            username: 'Cpfist',
+            image: '/demo-pfp2.jpeg'
+        },
+        {
+            username: 'asa',
+            image: '/demo-pfp.jpeg'
+        },
+        {
+            username: 'Cpfist',
+            image: '/demo-pfp2.jpeg'
+        },
+        {
+            username: 'asa',
+            image: '/demo-pfp.jpeg'
+        },
+        {
+            username: 'Cpfist',
+            image: '/demo-pfp2.jpeg'
+        },
+        {
+            username: 'asa',
+            image: '/demo-pfp.jpeg'
+        },
+        {
+            username: 'Cpfist',
+            image: '/demo-pfp2.jpeg'
+        },        {
+            username: 'asa',
+            image: '/demo-pfp.jpeg'
+        },
+        {
+            username: 'Cpfist',
+            image: '/demo-pfp2.jpeg'
+        },        {
+            username: 'asa',
+            image: '/demo-pfp.jpeg'
+        },
+        {
+            username: 'Cpfist',
+            image: '/demo-pfp2.jpeg'
+        },        {
+            username: 'asa',
+            image: '/demo-pfp.jpeg'
+        },
+        {
+            username: 'Cpfist',
+            image: '/demo-pfp2.jpeg'
+        },        {
+            username: 'asa',
+            image: '/demo-pfp.jpeg'
+        },
+        {
+            username: 'Cpfist',
+            image: '/demo-pfp2.jpeg'
+        },        {
+            username: 'asa',
+            image: '/demo-pfp.jpeg'
+        },
+        {
+            username: 'Cpfist',
+            image: '/demo-pfp2.jpeg'
+        },        {
+            username: 'asa',
+            image: '/demo-pfp.jpeg'
+        },
+        {
+            username: 'Cpfist',
+            image: '/demo-pfp2.jpeg'
+        },        {
+            username: 'asa',
+            image: '/demo-pfp.jpeg'
+        },        {
+            username: 'Cpfist',
+            image: '/demo-pfp2.jpeg'
+        },        {
+            username: 'asa',
+            image: '/demo-pfp.jpeg'
+        },        {
+            username: 'Cpfist',
+            image: '/demo-pfp2.jpeg'
+        },        {
+            username: 'asa',
+            image: '/demo-pfp.jpeg'
+        },        {
+            username: 'Cpfist',
+            image: '/demo-pfp2.jpeg'
+        },        {
+            username: 'asa',
+            image: '/demo-pfp.jpeg'
+        },        {
+            username: 'Cpfist',
+            image: '/demo-pfp2.jpeg'
+        },        {
+            username: 'asa',
+            image: '/demo-pfp.jpeg'
+        },
+
+        
+    ]
+
 
     useEffect(() => {
 
@@ -77,6 +191,31 @@ export default function Home() {
                         fill
                     />
                 </div>
+                <div className={styles["new-container"]}>
+                    <div className={styles.divider} />
+                    <div className={styles["slider-container"]}>
+                        <div className={styles["slider-animation"]}>
+                            {items.map((item, index) => {
+                                return (
+                                    <div className={styles.user}>
+                                        <div className={styles["profile-image-container"]}>
+                                            <Image
+                                                fill 
+                                                src={item.image}
+                                                alt="user-image"
+                                                style={{ borderRadius: '100%' }}
+                                            />
+                                        </div>
+                                        <h3 className={styles.username}>{item.username}</h3>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+                    <div className={styles.divider} />
+                </div>
+
+
 
             
                 {/* <button className={styles.login} onClick={() => {
