@@ -33,11 +33,22 @@ export default function Home() {
             <Navbar />
             <div className={styles.container}>
                 <div className={styles["background-images"]}>
-                    <Image 
-                        src='/Vector.svg'
-                        alt="vector"
-                        fill
-                    />
+                    <div className={styles["image-container"]}>
+                        <Image 
+                            src='/Vector2.svg'
+                            alt="vector"
+                            fill
+                        />
+                    </div>
+
+                    <div className={styles["image-container"]}>
+                        <Image 
+                            src='/Vector.svg'
+                            alt="vector"
+                            fill
+                        />
+                    </div>
+
                 </div>
 
             

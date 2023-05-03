@@ -21,3 +21,15 @@
     cursor: pointer;
     width: 6rem;
 }
+
+.image-container {
+    width: 35vw;
+    height: 75vh;
+    position: relative;
+}
+
+.background-images {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
