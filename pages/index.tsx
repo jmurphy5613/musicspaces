@@ -57,8 +57,8 @@ export default function Home() {
                 </div>
                 <div className={styles["landing-text-container"]}>
                     <h1 className={styles["landing-title"]} data-aos="fade-up">connect over music with your friends</h1>
-                    <h3 className={styles["landing-description"]} data-aos="fade-up" data-aos-delay="300">Discover new music, compare your tastes, and connect with friends.</h3>
-                    <button className={styles["spotify-login-button"]} data-aos="fade-up" data-aos-delay="600">
+                    <h3 className={styles["landing-description"]} data-aos="fade-up" data-aos-delay="100">Discover new music, compare your tastes, and connect with friends.</h3>
+                    <button className={styles["spotify-login-button"]} data-aos="fade-up" data-aos-delay="200">
                         <h2 className={styles["button-label"]}>Sign in</h2>
                         <div className={styles["button-image-container"]}>
                             <Image 
@@ -69,6 +69,13 @@ export default function Home() {
                         </div>
 
                     </button>
+                </div>
+                <div className={styles["demo-image-container"]} data-aos="zoom-in-up">
+                    <Image 
+                        src='/demo-view.svg'
+                        alt="demo view"
+                        fill
+                    />
                 </div>
 
             

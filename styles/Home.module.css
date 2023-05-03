@@ -1,9 +1,10 @@
 .container {
-    height: 100vh;
+    height: 200vh;
     width: 100%;
     background-color: #12131e; 
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .login {
@@ -95,4 +96,12 @@
     height: 100%;
     position: relative;
 
+}
+
+.demo-image-container {
+    position: relative;
+    margin-top: 3rem;
+    width: 70%;
+    height: 70vh;
+    z-index: 1;
 }
