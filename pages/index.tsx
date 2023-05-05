@@ -192,7 +192,7 @@ export default function Home() {
                     />
                 </div>
                 <div className={styles["new-container"]}>
-                    <div className={styles.divider} />
+                    <h2 className={styles["registered-title"]}>Join these recent users:</h2>
                     <div className={styles["slider-container"]}>
                         <div className={styles["slider-animation"]}>
                             {items.map((item, index) => {
@@ -212,7 +212,6 @@ export default function Home() {
                             })}
                         </div>
                     </div>
-                    <div className={styles.divider} />
                 </div>
 
 
