@@ -41,6 +41,16 @@ const Profile = () => {
                             </div>
                         </div>
                     </div>
+                    <div className={styles["user-facts"]}>
+                        <div className={styles.fact}>
+                            <h1 className={styles.figure}>64</h1>
+                            <h3 className={styles["figure-description"]}>unique songs</h3>
+                        </div>
+                        <div className={styles.fact}>
+                            <h1 className={styles.figure}>128</h1>
+                            <h3 className={styles["figure-description"]}>hours listened</h3>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
