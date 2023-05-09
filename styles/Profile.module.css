@@ -12,6 +12,7 @@
     height: 33%;
     background: linear-gradient(90deg, #000000 0%, #171A38 100%);
     border-radius: 25px;
+    position: relative;
 }
 
 .user-info-container {
@@ -49,4 +50,46 @@
     font-weight: 400;
     font-size: 16px;
     color: #9CA3AF;
+}
+
+.following-stat {
+    font-family: 'Outfit';
+    font-weight: 400;
+    font-size: 16px;
+    color: white;
+}
+
+.open-in-spotify {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0.5rem;
+    right: 1.5rem;
+    align-items: center;
+    width: 10rem;
+    height: 3rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.open-in-spotify:hover {
+    .spotify-button-label {
+        color: #1ed750;
+    }
+}
+
+.spotify-logo-parent {
+    position: relative;
+    height: 60%;
+    width: 25%;
+}
+
+.spotify-button-label {
+    font-family: 'Outfit';
+    font-weight: 400;
+    font-size: 16px;
+    color: white;
+    white-space: nowrap;
+    padding-left: 0.5rem;
+    transition: 0.5s;
 }

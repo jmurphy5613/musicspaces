@@ -8,6 +8,18 @@ const Profile = () => {
             <Navbar />
             <div className={styles.container}>
                 <div className={styles["user-container"]}>
+
+                    <button className={styles["open-in-spotify"]}>
+                        <div className={styles["spotify-logo-parent"]}>
+                            <Image 
+                                src="/spotify-logo-white.svg"
+                                fill
+                                alt='spotify logo'
+                            />
+                        </div>
+                        <h3 className={styles["spotify-button-label"]}>open in spotify</h3>
+                    </button>
+
                     <div className={styles["user-info-container"]}>
                         <div className={styles["image-container"]}>
                             <Image 
@@ -22,10 +34,10 @@ const Profile = () => {
                                 <h1 className={styles.name}>John Murphy</h1>
                                 <h3 className={styles.username}>@jmurphy5613</h3>
                             </div>
-                            <div style={{ display: 'flex' }}>
-                                <h3>6 followers</h3>
-                                <h3></h3>
-                                <h3>6 following</h3>
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <h3 className={styles["following-stat"]} style={{ padding: '0.5rem', paddingLeft: '0' }}>6 followers</h3>
+                                <h3>•</h3>
+                                <h3 className={styles["following-stat"]} style={{ padding: '0.5rem' }}>6 following</h3>
                             </div>
                         </div>
                     </div>

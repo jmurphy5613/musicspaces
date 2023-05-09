@@ -176,7 +176,7 @@ export default function Home() {
                         <h2 className={styles["button-label"]}>Sign in</h2>
                         <div className={styles["button-image-container"]}>
                             <Image 
-                                src='/spotify-logo.svg'
+                                src='/spotify-logo-black.svg'
                                 alt='spotify-logo'
                                 fill
                             />
