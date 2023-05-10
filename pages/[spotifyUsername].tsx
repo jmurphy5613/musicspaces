@@ -87,6 +87,24 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
+
+                <div className={styles["content-container"]}>
+                    <div className={styles.navigation}>
+                        <div className={styles["navigation-item"]}>
+                            <div className={styles["navigation-image-container"]}>
+                                <Image 
+                                    src='/sound_light.svg'
+                                    fill
+                                    alt='sound icon'
+                                />
+                            </div>
+                            <h2 className={styles["navigation-label"]}>Top Songs</h2>
+                        </div>
+                        <div className={styles.overlay}>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
 

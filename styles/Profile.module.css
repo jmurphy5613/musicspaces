@@ -9,11 +9,12 @@
 
 .user-container {
     width: 90%;
-    height: 33%;
+    height: 33vh;
     background: linear-gradient(90deg, #000000 0%, #171A38 100%);
     border-radius: 25px;
     position: relative;
     display: flex;
+    margin-top: 1rem;
 }
 
 .user-info-container {
@@ -124,4 +125,55 @@
     font-weight: 400;
     font-size: 16px;
     color: #9CA3AF;
+}
+
+.content-container {
+    width: 90%;
+    height: 40vh;
+    display: flex;
+    margin-top: 1rem;
+}
+
+.navigation {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.navigation-item {
+    display: flex;
+    align-items: center;
+    width: 12rem;
+    height: 4rem;
+    border-radius: 5px;
+}
+
+.overlay {
+    position: absolute;
+    height: 4rem;
+    width: 12rem;
+    background-color: rgba(167, 178, 255, 0);
+    border: 1px solid rgba(167, 178, 255, 0);
+    border-radius: 5px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+.overlay:hover {
+    background-color: rgba(167, 178, 255, 0.1);
+    border: 1px solid rgba(167, 178, 255, 1);
+}
+
+.navigation-image-container {
+    height: 75%;
+    width: 4rem;
+    position: relative;
+}
+
+.navigation-label {
+    font-family: 'Outfit';
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
 }
