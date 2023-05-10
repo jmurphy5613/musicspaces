@@ -1,0 +1,126 @@
+.user-container {
+    width: 90%;
+    height: 33vh;
+    background: linear-gradient(90deg, #000000 0%, #171A38 100%);
+    border-radius: 25px;
+    position: relative;
+    display: flex;
+    margin-top: 1rem;
+}
+
+.user-info-container {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    padding: 3rem;
+}
+
+.user-description {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.image-container {
+    height: 10rem;
+    width: 10rem;
+    position: relative;
+    border-radius: 100%;
+    border: 1px solid #A7B2FF;
+}
+
+.name {
+    font-family: 'Outfit';
+    font-weight: 400;
+    font-size: 36px;
+    color: white;
+    white-space: nowrap;
+}
+
+.username {
+    font-family: 'Outfit';
+    font-weight: 400;
+    font-size: 16px;
+    color: #9CA3AF;
+}
+
+.following-stat {
+    font-family: 'Outfit';
+    font-weight: 400;
+    font-size: 16px;
+    color: white;
+}
+
+.open-in-spotify {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0.5rem;
+    right: 1.5rem;
+    align-items: center;
+    width: 10rem;
+    height: 3rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.open-in-spotify:hover {
+    .spotify-button-label {
+        color: #1ed750;
+    }
+}
+
+.spotify-logo-parent {
+    position: relative;
+    height: 60%;
+    width: 25%;
+}
+
+.spotify-button-label {
+    font-family: 'Outfit';
+    font-weight: 400;
+    font-size: 16px;
+    color: white;
+    white-space: nowrap;
+    padding-left: 0.5rem;
+    transition: 0.5s;
+}
+
+.user-facts {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.fact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.figure {
+    font-family: 'Outfit';
+    font-weight: 400;
+    font-size: 36px;
+    color: white;
+}
+
+.figure-description {
+    font-family: 'Outfit';
+    font-weight: 400;
+    font-size: 16px;
+    color: #9CA3AF;
+}
+
+.content-container {
+    width: 90%;
+    height: 40vh;
+    display: flex;
+    margin-top: 1rem;
+}
