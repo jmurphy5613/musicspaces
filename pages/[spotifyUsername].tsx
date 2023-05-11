@@ -15,6 +15,7 @@ const Profile = () => {
                 <ProfileBlock />
                 <div className={styles["content-container"]}>
                     <ProfileTabs currentTab={currentTab} setUserTab={setUserTab} />
+                    
                 </div>
             </div>
         </>
