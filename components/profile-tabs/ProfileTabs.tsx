@@ -1,7 +1,12 @@
 import Image from "next/image"
 import styles from './ProfileTabs.module.css'
 
-const ProfileTabs = () => {
+interface ProfileTabsProps {
+    currentTab: string
+    setUserTab: (tab: string) => void
+}
+
+const ProfileTabs:React.FC<ProfileTabsProps> = () => {
 
     const tabs = [
         {
