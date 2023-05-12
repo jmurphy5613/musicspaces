@@ -57,6 +57,19 @@ const TopSongs = () => {
                     )
                 })}
             </div>
+            <div className={styles["top-song"]}>
+                <h1 className={styles["top-song-title"]}>Your Top Song</h1>
+                <h2 className={styles["top-song-name"]}>{topSongs[0].name}</h2>
+                <h3 className={styles["top-song-artist"]}>{topSongs[0].artist}</h3>
+                <div className={styles["top-song-icon-container"]}>
+                    <Image 
+                        src={topSongs[0].image}
+                        fill
+                        alt='icon'
+                    />
+                </div>
+                <h2 className={styles.streams}>Total Streams: <span className={styles.purple}>53</span></h2>
+            </div>
 
         </div>
     )

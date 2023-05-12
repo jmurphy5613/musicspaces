@@ -30,7 +30,7 @@ const TimeControl:React.FC<TimeControlProps> = ({ currentTime, setTime }) => {
                                 <div className={styles.underline} /> 
                             </div> 
                             
-                        : <h2 className={styles.label}>{time.label}</h2>}
+                        : <h2 onClick={() => setTime(time.label)} className={styles.label}>{time.label}</h2>}
                     </div>
                 )
             })}

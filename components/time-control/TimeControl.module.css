@@ -2,7 +2,7 @@
     display: flex;
     position: absolute;
     top: 0;
-    right: 0;
+    right: 0.5rem;
 }
 
 .time-item {
@@ -10,6 +10,7 @@
     align-items: center;
     flex-direction: column;
     margin: 0 0.5rem 0 0.5rem;
+    cursor: pointer;
 }
 
 .activated {
