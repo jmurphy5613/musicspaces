@@ -36,6 +36,14 @@
 .activated {
     background-color: rgba(167, 178, 255, 0.1);
     border: 1px solid rgba(167, 178, 255, 1);
+    position: absolute;
+    height: 4rem;
+    width: 12rem;
+    border-radius: 5px;
+    transition: 0.25s;
+    cursor: pointer;
+    left: 0;
+    top: 0;
 }
 
 .navigation-image-container {

@@ -6,7 +6,7 @@ interface ProfileTabsProps {
     setUserTab: (tab: string) => void
 }
 
-const ProfileTabs:React.FC<ProfileTabsProps> = () => {
+const ProfileTabs: React.FC<ProfileTabsProps> = ({ currentTab, setUserTab }) => {
 
     const tabs = [
         {
@@ -29,7 +29,7 @@ const ProfileTabs:React.FC<ProfileTabsProps> = () => {
             {tabs.map((tab, index) => {
                 return (
                     <>
-                        <div className={styles["navigation-item"]}>
+                        <div className={styles["navigation-item"]} key={index}>
                             <div className={styles["navigation-image-container"]}>
                                 <Image
                                     src={tab.icon}
@@ -38,7 +38,11 @@ const ProfileTabs:React.FC<ProfileTabsProps> = () => {
                                 />
                             </div>
                             <h2 className={styles["navigation-label"]}>{tab.label}</h2>
-                            <div className={styles.overlay} />
+                            {currentTab == tab.label ? <div className={styles.activated} onClick={() => {
+                                setUserTab(tab.label)
+                            }} /> : <div className={styles.overlay} onClick={() => {
+                                setUserTab(tab.label)
+                            }} />}
                         </div>
                     </>
                 )
