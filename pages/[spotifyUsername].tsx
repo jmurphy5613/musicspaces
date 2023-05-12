@@ -3,6 +3,7 @@ import Navbar from '../components/navbar/Navbar'
 import ProfileTabs from '../components/profile-tabs/ProfileTabs'
 import ProfileBlock from '../components/profile-block/ProfileBlock'
 import { useState } from 'react'
+import TopSongs from '../components/top-songs/TopSongs'
 
 const Profile = () => {
 
@@ -15,7 +16,9 @@ const Profile = () => {
                 <ProfileBlock />
                 <div className={styles["content-container"]}>
                     <ProfileTabs currentTab={currentTab} setUserTab={setUserTab} />
-                    
+                    {
+                        currentTab == 'Top Songs' ? <TopSongs /> : <></>
+                    }
                 </div>
             </div>
         </>

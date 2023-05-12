@@ -1,8 +1,7 @@
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import styles from '../styles/Home.module.css'
-import NameModal from "../components/name-modal/NameModal";
-import { auth, getAccessToken } from "../utils/requests/auth";
+import { getAccessToken } from "../utils/requests/auth";
 import Navbar from "../components/navbar/Navbar";
 import Image from "next/image";
 import 'aos/dist/aos.css';
