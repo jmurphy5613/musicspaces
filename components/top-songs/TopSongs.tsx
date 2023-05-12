@@ -1,7 +1,11 @@
 import styles from './TopSongs.module.css'
 import Image from 'next/image'
+import { useState } from 'react'
+import TimeControl from '../time-control/TimeControl'
 
 const TopSongs = () => {
+
+    const [time, setTime] = useState('4 weeks')
 
     const topSongs = [
         {
@@ -28,6 +32,9 @@ const TopSongs = () => {
 
     return (
         <div className={styles.container}>
+
+            <TimeControl currentTime={time} setTime={setTime} />
+
             <div className={styles["top-songs-list"]}>
                 {topSongs.map((song, index) => {
                     return (
