@@ -18,119 +18,7 @@ export default function Home() {
         router.push('/profile')
     }
 
-    const items = [
-        {
-            username: 'asa',
-            image: '/demo-pfp.jpeg'
-        },
-        {
-            username: 'Cpfist',
-            image: '/demo-pfp2.jpeg'
-        },
-        {
-            username: 'asa',
-            image: '/demo-pfp.jpeg'
-        },
-        {
-            username: 'Cpfist',
-            image: '/demo-pfp2.jpeg'
-        },
-        {
-            username: 'asa',
-            image: '/demo-pfp.jpeg'
-        },
-        {
-            username: 'Cpfist',
-            image: '/demo-pfp2.jpeg'
-        },
-        {
-            username: 'asa',
-            image: '/demo-pfp.jpeg'
-        },
-        {
-            username: 'Cpfist',
-            image: '/demo-pfp2.jpeg'
-        },
-        {
-            username: 'asa',
-            image: '/demo-pfp.jpeg'
-        },
-        {
-            username: 'Cpfist',
-            image: '/demo-pfp2.jpeg'
-        },        {
-            username: 'asa',
-            image: '/demo-pfp.jpeg'
-        },
-        {
-            username: 'Cpfist',
-            image: '/demo-pfp2.jpeg'
-        },        {
-            username: 'asa',
-            image: '/demo-pfp.jpeg'
-        },
-        {
-            username: 'Cpfist',
-            image: '/demo-pfp2.jpeg'
-        },        {
-            username: 'asa',
-            image: '/demo-pfp.jpeg'
-        },
-        {
-            username: 'Cpfist',
-            image: '/demo-pfp2.jpeg'
-        },        {
-            username: 'asa',
-            image: '/demo-pfp.jpeg'
-        },
-        {
-            username: 'Cpfist',
-            image: '/demo-pfp2.jpeg'
-        },        {
-            username: 'asa',
-            image: '/demo-pfp.jpeg'
-        },
-        {
-            username: 'Cpfist',
-            image: '/demo-pfp2.jpeg'
-        },        {
-            username: 'asa',
-            image: '/demo-pfp.jpeg'
-        },
-        {
-            username: 'Cpfist',
-            image: '/demo-pfp2.jpeg'
-        },        {
-            username: 'asa',
-            image: '/demo-pfp.jpeg'
-        },        {
-            username: 'Cpfist',
-            image: '/demo-pfp2.jpeg'
-        },        {
-            username: 'asa',
-            image: '/demo-pfp.jpeg'
-        },        {
-            username: 'Cpfist',
-            image: '/demo-pfp2.jpeg'
-        },        {
-            username: 'asa',
-            image: '/demo-pfp.jpeg'
-        },        {
-            username: 'Cpfist',
-            image: '/demo-pfp2.jpeg'
-        },        {
-            username: 'asa',
-            image: '/demo-pfp.jpeg'
-        },        {
-            username: 'Cpfist',
-            image: '/demo-pfp2.jpeg'
-        },        {
-            username: 'asa',
-            image: '/demo-pfp.jpeg'
-        },
 
-        
-    ]
 
 
     useEffect(() => {
@@ -153,7 +41,7 @@ export default function Home() {
                 <div className={styles["background-images"]}>
                     <div className={styles["image-container"]}>
                         <Image 
-                            src='/Vector2.svg'
+                            src='/art/Vector2.svg'
                             alt="vector"
                             fill
                         />
@@ -161,7 +49,7 @@ export default function Home() {
 
                     <div className={styles["image-container"]}>
                         <Image 
-                            src='/Vector.svg'
+                            src='/art/Vector.svg'
                             alt="vector"
                             fill
                         />
@@ -175,7 +63,7 @@ export default function Home() {
                         <h2 className={styles["button-label"]}>Sign in</h2>
                         <div className={styles["button-image-container"]}>
                             <Image 
-                                src='/spotify-logo-black.svg'
+                                src='/icons/spotify-logo-black.svg'
                                 alt='spotify-logo'
                                 fill
                             />

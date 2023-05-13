@@ -4,65 +4,14 @@ import { useEffect, useState } from 'react'
 import TimeControl from '../time-control/TimeControl'
 import AOS from 'aos'
 import 'aos/dist/aos.css';
+import { topSongs } from '../../utils/data'
 
 
 const TopSongs = () => {
 
     const [time, setTime] = useState('4 weeks')
 
-    const topSongs = [
-        {
-            name: 'Sandals',
-            artist: 'khai dreams',
-            image: '/sandals.png'
-        },
-        {
-            name: 'Graveyard Blues',
-            artist: 'MyKey',
-            image: '/graveyard-blues.jpg'
-        },
-        {
-            name: 'Seventeen',
-            artist: 'Peach Pit',
-            image: '/seventeen.jpg'
-        },
-        {
-            name: 'Best Tears',
-            artist: 'Happy Fits',
-            image: '/best-tears.jpeg'
-        },
-        {
-            name: 'Sandals',
-            artist: 'khai dreams',
-            image: '/sandals.png'
-        },
-        {
-            name: 'Graveyard Blues',
-            artist: 'MyKey',
-            image: '/graveyard-blues.jpg'
-        },
-        {
-            name: 'Seventeen',
-            artist: 'Peach Pit',
-            image: '/seventeen.jpg'
-        },
-        {
-            name: 'Best Tears',
-            artist: 'Happy Fits',
-            image: '/best-tears.jpeg'
-        },
-        {
-            name: 'Seventeen',
-            artist: 'Peach Pit',
-            image: '/seventeen.jpg'
-        },
-        {
-            name: 'Best Tears',
-            artist: 'Happy Fits',
-            image: '/best-tears.jpeg'
-        }
 
-    ]
 
     useEffect(() => {
         AOS.init({
