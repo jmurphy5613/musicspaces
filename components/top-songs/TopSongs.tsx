@@ -27,7 +27,38 @@ const TopSongs = () => {
             name: 'Best Tears',
             artist: 'Happy Fits',
             image: '/best-tears.jpeg'
+        },
+        {
+            name: 'Sandals',
+            artist: 'khai dreams',
+            image: '/sandals.png'
+        },
+        {
+            name: 'Graveyard Blues',
+            artist: 'MyKey',
+            image: '/graveyard-blues.jpg'
+        },
+        {
+            name: 'Seventeen',
+            artist: 'Peach Pit',
+            image: '/seventeen.jpg'
+        },
+        {
+            name: 'Best Tears',
+            artist: 'Happy Fits',
+            image: '/best-tears.jpeg'
+        },
+        {
+            name: 'Seventeen',
+            artist: 'Peach Pit',
+            image: '/seventeen.jpg'
+        },
+        {
+            name: 'Best Tears',
+            artist: 'Happy Fits',
+            image: '/best-tears.jpeg'
         }
+
     ]
 
     return (
@@ -66,6 +97,7 @@ const TopSongs = () => {
                         src={topSongs[0].image}
                         fill
                         alt='icon'
+                        style={{ borderRadius: '5px' }}
                     />
                 </div>
                 <h2 className={styles.streams}>Total Streams: <span className={styles.purple}>53</span></h2>
