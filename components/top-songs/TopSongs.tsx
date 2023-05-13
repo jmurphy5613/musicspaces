@@ -1,7 +1,10 @@
 import styles from './TopSongs.module.css'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import TimeControl from '../time-control/TimeControl'
+import AOS from 'aos'
+import 'aos/dist/aos.css';
+
 
 const TopSongs = () => {
 
@@ -61,15 +64,20 @@ const TopSongs = () => {
 
     ]
 
+    useEffect(() => {
+        AOS.init({
+            startEvent: 'DOMContentLoaded',
+            offset: 0
+        })
+    }, [])
+
     return (
-        <div className={styles.container}>
-
+        <div className={styles.container} >
             <TimeControl currentTime={time} setTime={setTime} />
-
             <div className={styles["top-songs-list"]}>
                 {topSongs.map((song, index) => {
                     return (
-                        <div className={styles["song-item"]}>
+                        <div className={styles["song-item"]} data-aos="fade-up" data-aos-delay={index*100} data-aos-once="true">
                             <h2 className={styles.number}>{index+1}.</h2>
                             <div className={styles["icon-container"]}>
                                 <Image
@@ -88,7 +96,7 @@ const TopSongs = () => {
                     )
                 })}
             </div>
-            <div className={styles["top-song"]}>
+            <div className={styles["top-song"]} data-aos="flip-left" data-aos-duration="600" data-aos-delay="1200">
                 <h1 className={styles["top-song-title"]}>Your Top Song</h1>
                 <h2 className={styles["top-song-name"]}>{topSongs[0].name}</h2>
                 <h3 className={styles["top-song-artist"]}>{topSongs[0].artist}</h3>

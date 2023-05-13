@@ -20,7 +20,6 @@ const ProfileBlock = () => {
         duration: 2,
         useEasing: true,
         useGrouping: true,
-        
     }
 
 
@@ -73,11 +72,11 @@ const ProfileBlock = () => {
             </div>
             <div className={styles["user-facts"]}>
                 <div className={styles.fact}>
-                    <h1 ref={countupRef1 as unknown as React.RefObject<HTMLDivElement>} className={styles.figure}></h1>
+                    <h1 ref={countupRef1 as unknown as React.RefObject<HTMLDivElement>} className={styles.figure}>0</h1>
                     <h3 className={styles["figure-description"]}>unique songs</h3>
                 </div>
                 <div className={styles.fact}>
-                    <h1 ref={countupRef2 as unknown as React.RefObject<HTMLDivElement>} className={styles.figure}></h1>
+                    <h1 ref={countupRef2 as unknown as React.RefObject<HTMLDivElement>} className={styles.figure}>0</h1>
                     <h3 className={styles["figure-description"]}>hours listened</h3>
                 </div>
             </div>
