@@ -6,6 +6,7 @@ import Navbar from "../components/navbar/Navbar";
 import Image from "next/image";
 import 'aos/dist/aos.css';
 import AOS from 'aos'
+import { duplicatedUserItems } from "../utils/data";
 
 export default function Home() {
     const router = useRouter();
@@ -73,7 +74,7 @@ export default function Home() {
                 </div>
                 <div className={styles["demo-image-container"]} data-aos="zoom-in-up">
                     <Image 
-                        src='/demo-view.svg'
+                        src='/art/demo-view.svg'
                         alt="demo view"
                         fill
                     />
@@ -82,7 +83,7 @@ export default function Home() {
                     <h2 className={styles["registered-title"]}>Join these recent users:</h2>
                     <div className={styles["slider-container"]}>
                         <div className={styles["slider-animation"]}>
-                            {items.map((item, index) => {
+                            {duplicatedUserItems.map((item, index) => {
                                 return (
                                     <div className={styles.user}>
                                         <div className={styles["profile-image-container"]}>
