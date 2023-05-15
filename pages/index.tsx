@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import styles from '../styles/Home.module.css'
-import { getAccessToken } from "../utils/requests/auth";
+import { getAccessToken, auth } from "../utils/requests/auth";
 import Navbar from "../components/navbar/Navbar";
 import Image from "next/image";
 import 'aos/dist/aos.css';
@@ -15,8 +15,9 @@ export default function Home() {
 
     const getToken = async (code: string) => {
         const data = await getAccessToken(code as string)
+        console.log(data)
         localStorage.setItem('access_token', data.access_token)
-        router.push('/profile')
+        router.push('/jmurphy5613')
     }
 
 
@@ -60,7 +61,9 @@ export default function Home() {
                 <div className={styles["landing-text-container"]}>
                     <h1 className={styles["landing-title"]} data-aos="fade-up">connect over music with your friends</h1>
                     <h3 className={styles["landing-description"]} data-aos="fade-up" data-aos-delay="100">Discover new music, compare your tastes, and connect with friends.</h3>
-                    <button className={styles["spotify-login-button"]} data-aos="fade-up" data-aos-delay="200">
+                    <button className={styles["spotify-login-button"]} onClick={() => {
+                        auth(router)
+                    }} data-aos="fade-up" data-aos-delay="200">
                         <h2 className={styles["button-label"]}>Sign in</h2>
                         <div className={styles["button-image-container"]}>
                             <Image 

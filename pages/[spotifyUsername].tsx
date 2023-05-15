@@ -9,7 +9,7 @@ import AOS from 'aos'
 
 const Profile = () => {
 
-    const [currentTab, setUserTab] = useState('Top Songs')
+    const [currentTab, setUserTab] = useState('Top Artists')
 
     useEffect(() => {
         AOS.init()
