@@ -41,7 +41,7 @@ const ProfileBlock = () => {
             <button className={styles["open-in-spotify"]}>
                 <div className={styles["spotify-logo-parent"]}>
                     <Image
-                        src="/spotify-logo-white.svg"
+                        src="/icons/spotify-logo-white.svg"
                         fill
                         alt='spotify logo'
                     />
@@ -52,7 +52,7 @@ const ProfileBlock = () => {
             <div className={styles["user-info-container"]}>
                 <div className={styles["image-container"]}>
                     <Image
-                        src="/johntransparent.png"
+                        src="/pfps/johntransparent.png"
                         alt='profile picture'
                         fill
                         style={{ borderRadius: '100%' }}
