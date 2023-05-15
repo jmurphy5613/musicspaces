@@ -57,43 +57,43 @@ export const topSongs = [
 export const topArtists = [
     {
         name: 'Kanye West',
-        image: '/cover-icons/kanye-pfp.jpeg',
+        image: '/artist-pfp/kanye-pfp.jpeg',
     },
     {
         name: 'Peach Pit',
-        image: '/cover-icons/peachpit-pfp.jpeg',
+        image: '/artist-pfp/peachpit-pfp.jpeg',
     },
     {
         name: 'Joji',
-        image: '/cover-icons/joji-pfp.jpeg',
+        image: '/artist-pfp/joji-pfp.jpeg',
     },
     {
         name: 'Aries',
-        image: '/cover-icons/aries-pfp.jpg',
+        image: '/artist-pfp/aries-pfp.jpeg',
     },
     {
         name: 'AJR',
-        image: '/cover-icons/ajr-pfp.jpeg',
+        image: '/artist-pfp/ajr-pfp.jpeg',
     },
     {
         name: 'khai dreams',
-        image: '/cover-icons/khaidreams-pfp.jpeg',
+        image: '/artist-pfp/kahidreams-pfp.jpeg',
     },
     {
         name: 'Eyedress',
-        image: '/cover-icons/eyedress-pfp.jpeg',
+        image: '/artist-pfp/eyedress-pfp.jpeg',
     },
     {
         name: 'Wallows',
-        image: '/cover-icons/wallows-pfp.jpeg',
+        image: '/artist-pfp/wallows-pfp.jpeg',
     },
     {
         name: 'Logic',
-        image: '/cover-icons/logic-pfp.jpeg',
+        image: '/artist-pfp/logic-pfp.jpeg',
     },
     {
         name: 'Dayglow',
-        image: '/cover-icons/dayglow-pfp.jpeg',
+        image: '/artist-pfp/dayglow-pfp.jpeg',
     }
 ]
 

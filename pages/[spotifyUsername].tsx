@@ -4,6 +4,7 @@ import ProfileTabs from '../components/profile-tabs/ProfileTabs'
 import ProfileBlock from '../components/profile-block/ProfileBlock'
 import { useEffect, useState } from 'react'
 import TopSongs from '../components/top-songs/TopSongs'
+import TopArtists from '../components/top-artists/TopArtists'
 import AOS from 'aos'
 
 const Profile = () => {
@@ -23,6 +24,9 @@ const Profile = () => {
                     <ProfileTabs currentTab={currentTab} setUserTab={setUserTab} />
                     {
                         currentTab == 'Top Songs' ? <TopSongs /> : <></>
+                    }
+                    {
+                        currentTab == 'Top Artists' ? <TopArtists /> : <></>
                     }
                 </div>
             </div>
