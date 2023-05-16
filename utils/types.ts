@@ -21,3 +21,22 @@ export interface UserInfo {
     }>,
     id: string
 }
+
+export interface RecentlyPlayed {
+    items: Array<{
+        track: {
+            album: {
+                images: Array<{
+                    url: string,
+                    height: number,
+                    width: number
+                }>
+            },
+            artists: Array<{
+                name: string
+            }>,
+            name: string,
+            duration_ms: number
+        },
+    }>
+}

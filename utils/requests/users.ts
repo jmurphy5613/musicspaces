@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TopArtist, UserInfo } from '../types';
+import { RecentlyPlayed, TopArtist, UserInfo } from '../types';
 
 export const getTopArtists = async (time_range: string): Promise<TopArtist[]> => {
 
@@ -44,5 +44,23 @@ export const getUserInfo = async (): Promise<UserInfo> => {
     } catch (error) {
         console.log(error)
         throw new Error('Failed to get profile info');
+    }
+}
+
+export const getRecentlyPlayed = async (): Promise<RecentlyPlayed> => {
+    try {
+        const options = {
+            url: 'https://api.spotify.com/v1/me/player/recently-played',
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+            },
+        }
+
+        const res = await axios(options)
+        return res.data as RecentlyPlayed
+    } catch (error) {
+        console.log(error)
+        throw new Error('Failed to get recently played');
     }
 }
