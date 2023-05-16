@@ -1,7 +1,9 @@
 import Image from "next/image"
 import styles from './ProfileBlock.module.css'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState, use } from 'react'
 import { CountUp, CountUpOptions } from "countup.js"
+import { UserInfo } from "../../utils/types"
+import { getUserInfo } from "../../utils/requests/users"
 
 const ProfileBlock = () => {
 
@@ -11,9 +13,21 @@ const ProfileBlock = () => {
     let countup: CountUp
     let countup2: CountUp
 
+    const [userInfo, setUserInfo] = useState<UserInfo>()
+
+    const fetchUserInfo = async () => {
+        const userInfo = await getUserInfo()
+        console.log(userInfo)
+        setUserInfo(userInfo)
+    }
+
+    useEffect(() => {
+        fetchUserInfo()
+    }, [])
+
     useEffect(() => {
         initCountUps()
-    }, [])
+    }, [userInfo])
 
     //create options variable for countup
     const options:CountUpOptions = {
@@ -35,6 +49,8 @@ const ProfileBlock = () => {
         }
     }
 
+    if(!userInfo) return <></>
+
     return (
         <div className={styles["user-container"]}>
 
@@ -52,7 +68,7 @@ const ProfileBlock = () => {
             <div className={styles["user-info-container"]}>
                 <div className={styles["image-container"]}>
                     <Image
-                        src="/pfps/johntransparent.png"
+                        src={userInfo.images[0].url}
                         alt='profile picture'
                         fill
                         style={{ borderRadius: '100%' }}
@@ -60,13 +76,13 @@ const ProfileBlock = () => {
                 </div>
                 <div className={styles["user-description"]}>
                     <div style={{ display: 'flex', alignItems: 'flex-end', width: '50%' }}>
-                        <h1 className={styles.name}>John Murphy</h1>
-                        <h3 className={styles.username}>@jmurphy5613</h3>
+                        <h1 className={styles.name}>{userInfo.display_name}</h1>
+                        <h3 className={styles.username}>{`@${userInfo.id}`}</h3>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <h3 className={styles["following-stat"]} style={{ padding: '0.5rem', paddingLeft: '0' }}>6 followers</h3>
-                        <h3>•</h3>
-                        <h3 className={styles["following-stat"]} style={{ padding: '0.5rem' }}>6 following</h3>
+                        <h3 className={styles["following-stat"]} style={{ padding: '0.5rem', paddingLeft: '0' }}>{userInfo.followers.total} followers</h3>
+                        {/* <h3>•</h3>
+                        <h3 className={styles["following-stat"]} style={{ padding: '0.5rem' }}>6 following</h3> */}
                     </div>
                 </div>
             </div>

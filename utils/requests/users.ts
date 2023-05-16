@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TopArtist } from '../types';
+import { TopArtist, UserInfo } from '../types';
 
 export const getTopArtists = async (time_range: string): Promise<TopArtist[]> => {
 
@@ -27,4 +27,22 @@ export const getTopArtists = async (time_range: string): Promise<TopArtist[]> =>
         throw new Error('Failed to get top artists');
     }
 
+}
+
+export const getUserInfo = async (): Promise<UserInfo> => {
+    try {
+        const options = {
+            url: 'https://api.spotify.com/v1/me',
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+            },
+        }
+
+        const res = await axios(options)
+        return res.data as UserInfo
+    } catch (error) {
+        console.log(error)
+        throw new Error('Failed to get profile info');
+    }
 }
