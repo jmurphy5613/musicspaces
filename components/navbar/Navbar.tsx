@@ -6,7 +6,7 @@ const Navbar = () => {
         <div className={styles.container}>
             <div className={styles.left}>
                 <Image 
-                    src="/logo.png" 
+                    src="/icons/logo.png" 
                     alt='logo'
                     width={40} 
                     height={40} 

@@ -2,10 +2,11 @@ import styles from './TimeControl.module.css'
 
 interface TimeControlProps {
     currentTime: string
-    setTime: (time: string) => void
+    setTime: (time: string) => void,
+    callbackFetch: (currentTime: string) => void
 }
 
-const TimeControl:React.FC<TimeControlProps> = ({ currentTime, setTime }) => {
+const TimeControl:React.FC<TimeControlProps> = ({ currentTime, setTime, callbackFetch }) => {
 
     const times = [
         {
@@ -30,7 +31,10 @@ const TimeControl:React.FC<TimeControlProps> = ({ currentTime, setTime }) => {
                                 <div className={styles.underline} /> 
                             </div> 
                             
-                        : <h2 onClick={() => setTime(time.label)} className={styles.label}>{time.label}</h2>}
+                        : <h2 onClick={() => {
+                            setTime(time.label)
+                            callbackFetch(time.label)
+                        }} className={styles.label}>{time.label}</h2>}
                     </div>
                 )
             })}

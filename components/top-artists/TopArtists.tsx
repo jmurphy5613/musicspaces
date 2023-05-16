@@ -14,8 +14,8 @@ const TopArtists = () => {
     const [topArtists, setTopArtists] = useState<Array<TopArtist>>([])
 
 
-    const fetchTopArtists = async () => {
-        const timePeriod = durationToSpotfyFormat(time)
+    const fetchTopArtists = async (currentTime: string) => {
+        const timePeriod = durationToSpotfyFormat(currentTime)
         const topArtists = await getTopArtists(timePeriod)
         setTopArtists(topArtists)
     }
@@ -23,17 +23,22 @@ const TopArtists = () => {
     useEffect(() => {
         AOS.init({
             startEvent: 'DOMContentLoaded',
-            offset: 0
+            offset: 0,
+            once: true,
         })
-        fetchTopArtists()
+        fetchTopArtists(time)
     }, [])
+
+    useEffect(() => {
+        fetchTopArtists(time)
+    }, [time])
 
     if(!topArtists || topArtists.length === 0) return <></>
 
     return (
         <div className={styles.container}>
 
-            <TimeControl currentTime={time} setTime={setTime} />
+            <TimeControl callbackFetch={fetchTopArtists} currentTime={time} setTime={setTime} />
 
             <div className={styles["top-artist-list"]}>
                 {topArtists.map((artist: TopArtist, index) => {
