@@ -1,4 +1,4 @@
-export interface TopArtist {
+export interface Artist {
     href: string,
     name: string,
     images: Array<{
@@ -6,6 +6,21 @@ export interface TopArtist {
         height: number,
         width: number
     }>
+}
+
+export interface Track {
+    album: {
+        images: Array<{
+            url: string,
+            height: number,
+            width: number
+        }>
+    },
+    artists: Array<{
+        name: string
+    }>,
+    name: string,
+    duration_ms: number
 }
 
 export interface UserInfo {
@@ -23,22 +38,7 @@ export interface UserInfo {
 }
 
 export interface RecentlyPlayed {
-    items: Array<{
-        track: {
-            album: {
-                images: Array<{
-                    url: string,
-                    height: number,
-                    width: number
-                }>
-            },
-            artists: Array<{
-                name: string
-            }>,
-            name: string,
-            duration_ms: number
-        },
-    }>
+    items: Array<Track>
 }
 
 export interface RecentlyPlayedStats {

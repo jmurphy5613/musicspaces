@@ -15,8 +15,8 @@ export const recentlyPlayedToStats = (recentlyPlayed: RecentlyPlayed) => {
     let totalLength = 0
     let uniqueArtists = new Set()
     for(const track of recentlyPlayed.items) {
-        totalLength += track.track.duration_ms
-        for(const artist of track.track.artists) {
+        totalLength += track.duration_ms
+        for(const artist of track.artists) {
             uniqueArtists.add(artist.name)
         }
     }
