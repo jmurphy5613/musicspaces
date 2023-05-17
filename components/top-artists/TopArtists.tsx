@@ -5,13 +5,13 @@ import Image from 'next/image'
 import AOS from 'aos'
 import { durationToSpotfyFormat } from '../../utils/conversions'
 import { getTopArtists } from '../../utils/requests/users'
-import { TopArtist } from '../../utils/types'
+import { Artist } from '../../utils/types'
 
 const TopArtists = () => {
 
     const [time, setTime] = useState('4 weeks')
 
-    const [topArtists, setTopArtists] = useState<Array<TopArtist>>([])
+    const [topArtists, setTopArtists] = useState<Artist[]>([])
 
 
     const fetchTopArtists = async (currentTime: string) => {
@@ -41,7 +41,7 @@ const TopArtists = () => {
             <TimeControl callbackFetch={fetchTopArtists} currentTime={time} setTime={setTime} />
 
             <div className={styles["top-artist-list"]}>
-                {topArtists.map((artist: TopArtist, index) => {
+                {topArtists.map((artist: Artist, index) => {
                     return (
                         <div className={styles["artist-item"]} data-aos="fade-up" data-aos-delay={index*100} data-aos-once="true">
                             <h2 className={styles.number}>{index + 1}.</h2>

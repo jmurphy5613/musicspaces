@@ -4,25 +4,36 @@ import { useEffect, useState } from 'react'
 import TimeControl from '../time-control/TimeControl'
 import AOS from 'aos'
 import 'aos/dist/aos.css';
-import { topSongs } from '../../utils/data'
+import { Track } from '../../utils/types'
+import { getTopSongs } from '../../utils/requests/users'
+import { durationToSpotfyFormat } from '../../utils/conversions'
 
 
 const TopSongs = () => {
 
     const [time, setTime] = useState('4 weeks')
 
+    const [topSongs, setTopSongs] = useState<Track[]>()
 
+    const fetchTopSongs = async (currentTime: string) => {
+        const timePeriod = durationToSpotfyFormat(currentTime)
+        const songs = await getTopSongs(timePeriod)
+        setTopSongs(songs)
+    }
 
     useEffect(() => {
         AOS.init({
             startEvent: 'DOMContentLoaded',
             offset: 0
         })
+        fetchTopSongs(time)
     }, [])
+
+    if(!topSongs || topSongs.length === 0) return <></>
 
     return (
         <div className={styles.container} >
-            <TimeControl currentTime={time} setTime={setTime} />
+            <TimeControl callbackFetch={fetchTopSongs} currentTime={time} setTime={setTime} />
             <div className={styles["top-songs-list"]}>
                 {topSongs.map((song, index) => {
                     return (
@@ -30,7 +41,7 @@ const TopSongs = () => {
                             <h2 className={styles.number}>{index+1}.</h2>
                             <div className={styles["icon-container"]}>
                                 <Image
-                                    src={song.image}
+                                    src={song.album.images[0].url}
                                     fill
                                     alt='icon'
                                     style={{ borderRadius: '5px' }}
@@ -38,7 +49,7 @@ const TopSongs = () => {
                             </div>
                             <span style={{ display: 'flex', alignItems: 'flex-end' }}>
                                 <h2 className={styles.name}>{song.name}</h2>
-                                <h3 className={styles.artist}>{song.artist}</h3>
+                                <h3 className={styles.artist}>{song.artists[0].name}</h3>
                             </span>
 
                         </div>
@@ -48,10 +59,10 @@ const TopSongs = () => {
             <div className={styles["top-song"]} data-aos="flip-left" data-aos-duration="600" data-aos-delay="1200">
                 <h1 className={styles["top-song-title"]}>Your Top Song</h1>
                 <h2 className={styles["top-song-name"]}>{topSongs[0].name}</h2>
-                <h3 className={styles["top-song-artist"]}>{topSongs[0].artist}</h3>
+                <h3 className={styles["top-song-artist"]}>{topSongs[0].artists[0].name}</h3>
                 <div className={styles["top-song-icon-container"]}>
                     <Image 
-                        src={topSongs[0].image}
+                        src={topSongs[0].album.images[0].url}
                         fill
                         alt='icon'
                         style={{ borderRadius: '5px' }}

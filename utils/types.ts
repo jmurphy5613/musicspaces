@@ -37,10 +37,6 @@ export interface UserInfo {
     id: string
 }
 
-export interface RecentlyPlayed {
-    items: Array<Track>
-}
-
 export interface RecentlyPlayedStats {
     totalLength: number,
     uniqueArtists: number,
