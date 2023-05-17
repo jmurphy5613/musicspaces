@@ -2,8 +2,9 @@ import Image from "next/image"
 import styles from './ProfileBlock.module.css'
 import { useRef, useEffect, useState, use } from 'react'
 import { CountUp, CountUpOptions } from "countup.js"
-import { UserInfo } from "../../utils/types"
-import { getUserInfo } from "../../utils/requests/users"
+import { RecentlyPlayedStats, UserInfo } from "../../utils/types"
+import { getUserInfo, getRecentlyPlayed } from "../../utils/requests/users"
+import { recentlyPlayedToStats } from "../../utils/conversions"
 
 const ProfileBlock = () => {
 
@@ -14,11 +15,18 @@ const ProfileBlock = () => {
     let countup2: CountUp
 
     const [userInfo, setUserInfo] = useState<UserInfo>()
+    const [recentStats, setRecentStats] = useState<RecentlyPlayedStats>()
+
+    const [dataFetched, setDataFetched] = useState(false)
 
     const fetchUserInfo = async () => {
         const userInfo = await getUserInfo()
-        console.log(userInfo)
+        const recentlyPlayed = await getRecentlyPlayed()
+        const stats:RecentlyPlayedStats = recentlyPlayedToStats(recentlyPlayed)
+        console.log(stats)
+        setRecentStats(stats)
         setUserInfo(userInfo)
+        setDataFetched(true)
     }
 
     useEffect(() => {
@@ -27,7 +35,7 @@ const ProfileBlock = () => {
 
     useEffect(() => {
         initCountUps()
-    }, [userInfo])
+    }, [dataFetched])
 
     //create options variable for countup
     const options:CountUpOptions = {
@@ -38,9 +46,11 @@ const ProfileBlock = () => {
 
 
     async function initCountUps() {
+        if(!recentStats?.totalLength || !recentStats?.uniqueArtists) return console.error('recent stats not loaded')
+
         const countUpModule = await import('countup.js');
-        countup = new countUpModule.CountUp(countupRef1.current, 128, options)
-        countup2 = new countUpModule.CountUp(countupRef2.current, 325, options)
+        countup = new countUpModule.CountUp(countupRef1.current, recentStats.totalTracks, options)
+        countup2 = new countUpModule.CountUp(countupRef2.current, recentStats.uniqueArtists, options)
         if (!countup.error && !countup2.error) {
             countup.start()
             countup2.start()    
@@ -49,7 +59,7 @@ const ProfileBlock = () => {
         }
     }
 
-    if(!userInfo) return <></>
+    if(!dataFetched || !userInfo || !recentStats) return <></>
 
     return (
         <div className={styles["user-container"]}>
@@ -93,7 +103,7 @@ const ProfileBlock = () => {
                 </div>
                 <div className={styles.fact}>
                     <h1 ref={countupRef2 as unknown as React.RefObject<HTMLDivElement>} className={styles.figure}>0</h1>
-                    <h3 className={styles["figure-description"]}>hours listened</h3>
+                    <h3 className={styles["figure-description"]}>unique artists</h3>
                 </div>
             </div>
         </div>

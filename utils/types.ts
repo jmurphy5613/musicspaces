@@ -40,3 +40,9 @@ export interface RecentlyPlayed {
         },
     }>
 }
+
+export interface RecentlyPlayedStats {
+    totalLength: number,
+    uniqueArtists: number,
+    totalTracks: number
+}

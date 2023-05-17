@@ -26,6 +26,6 @@ export const auth = async (router: NextRouter) => {
     URL += "&response_type=code"
     URL += "&redirect_uri=" + "http://localhost:3000"
     URL += "&show_dialog=true"
-    URL += "&scope=user-read-private user-read-email user-top-read"
+    URL += "&scope=user-read-private user-read-email user-top-read user-read-recently-played"
     router.push(URL);
 };
