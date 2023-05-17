@@ -37,6 +37,10 @@ export interface UserInfo {
     id: string
 }
 
+export interface RecentlyPlayedTrack {
+    track: Track
+}
+
 export interface RecentlyPlayedStats {
     totalLength: number,
     uniqueArtists: number,

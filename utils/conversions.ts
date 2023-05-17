@@ -1,4 +1,4 @@
-import { Track } from "./types"
+import { RecentlyPlayedTrack, Track } from "./types"
 
 export const durationToSpotfyFormat = (duration: string) => {
     if(duration === '4 weeks') return 'short_term'
@@ -11,7 +11,7 @@ const msToMinutes = (ms: number) => {
     return Math.floor(ms / 60000)
 }
 
-export const recentlyPlayedToStats = (recentlyPlayed: Array<{ track: Track }>) => {
+export const recentlyPlayedToStats = (recentlyPlayed: Array<RecentlyPlayedTrack>) => {
     let totalLength = 0
     let uniqueArtists = new Set()
     console.log(recentlyPlayed)
