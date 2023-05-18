@@ -1,0 +1,7 @@
+.comparison-block {
+    width: 90%;
+    height: 38vh;
+    background: linear-gradient(90deg, #171A38 0%, #111328 50.52%, #171A38 100%);    border-radius: 25px;
+    display: flex;
+    margin-top: 1rem;
+}

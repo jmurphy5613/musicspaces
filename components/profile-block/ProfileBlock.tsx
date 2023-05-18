@@ -59,7 +59,6 @@ const ProfileBlock = () => {
         }
     }
 
-    if(!dataFetched || !userInfo || !recentStats) return <></>
 
     return (
         <div className={styles["user-container"]}>
@@ -74,27 +73,31 @@ const ProfileBlock = () => {
                 </div>
                 <h3 className={styles["spotify-button-label"]}>open in spotify</h3>
             </button>
-
+            
             <div className={styles["user-info-container"]}>
-                <div className={styles["image-container"]}>
-                    <Image
-                        src={userInfo.images[0].url}
-                        alt='profile picture'
-                        fill
-                        style={{ borderRadius: '100%' }}
-                    />
-                </div>
-                <div className={styles["user-description"]}>
-                    <div style={{ display: 'flex', alignItems: 'flex-end', width: '50%' }}>
-                        <h1 className={styles.name}>{userInfo.display_name}</h1>
-                        <h3 className={styles.username}>{`@${userInfo.id}`}</h3>
+                {userInfo &&
+                <>
+                    <div className={styles["image-container"]}>
+                        <Image
+                            src={userInfo.images[0].url}
+                            alt='profile picture'
+                            fill
+                            style={{ borderRadius: '100%' }}
+                        />
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <h3 className={styles["following-stat"]} style={{ padding: '0.5rem', paddingLeft: '0' }}>{userInfo.followers.total} followers</h3>
-                        {/* <h3>•</h3>
-                        <h3 className={styles["following-stat"]} style={{ padding: '0.5rem' }}>6 following</h3> */}
+                    <div className={styles["user-description"]}>
+                        <div style={{ display: 'flex', alignItems: 'flex-end', width: '50%' }}>
+                            <h1 className={styles.name}>{userInfo.display_name}</h1>
+                            <h3 className={styles.username}>{`@${userInfo.id}`}</h3>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <h3 className={styles["following-stat"]} style={{ padding: '0.5rem', paddingLeft: '0' }}>{userInfo.followers.total} followers</h3>
+                            {/* <h3>•</h3>
+                            <h3 className={styles["following-stat"]} style={{ padding: '0.5rem' }}>6 following</h3> */}
+                        </div>
                     </div>
-                </div>
+                </>}
+
             </div>
             <div className={styles["user-facts"]}>
                 <div className={styles.fact}>
