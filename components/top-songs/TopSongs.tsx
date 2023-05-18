@@ -68,7 +68,7 @@ const TopSongs = () => {
                         style={{ borderRadius: '5px' }}
                     />
                 </div>
-                <h2 className={styles.streams}>Total Streams: <span className={styles.purple}>53</span></h2>
+                {/* <h2 className={styles.streams}>Total Streams: <span className={styles.purple}>53</span></h2> */}
             </div>
 
         </div>

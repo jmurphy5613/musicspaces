@@ -11,6 +11,12 @@ const msToMinutes = (ms: number) => {
     return Math.floor(ms / 60000)
 }
 
+export const get24HoursAgoUnix = () => {
+    const date = new Date()
+    date.setDate(date.getDate() - 1)
+    return Math.floor(date.getTime() / 1000)
+}
+
 export const recentlyPlayedToStats = (recentlyPlayed: Array<RecentlyPlayedTrack>) => {
     let totalLength = 0
     let uniqueArtists = new Set()

@@ -17,10 +17,10 @@ const ProfileTabs: React.FC<ProfileTabsProps> = ({ currentTab, setUserTab }) => 
             label: 'Top Artists',
             icon: '/icons/mic_light.svg'
         },
-        {
-            label: 'Recent Songs',
-            icon: '/icons/alarmclock_light.svg'
-        }
+        // {
+        //     label: 'Recent Songs',
+        //     icon: '/icons/alarmclock_light.svg'
+        // }
     ]
 
 

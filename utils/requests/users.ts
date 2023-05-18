@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Artist, UserInfo, Track, RecentlyPlayedTrack } from '../types';
+import { get24HoursAgoUnix } from '../conversions';
 
 export const getTopArtists = async (time_range: string): Promise<Artist[]> => {
 
@@ -55,6 +56,10 @@ export const getRecentlyPlayed = async (): Promise<RecentlyPlayedTrack[]> => {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token')
             },
+            params: {
+                limit: 50,
+                after: get24HoursAgoUnix()
+            }
         }
 
         const res = await axios(options)
