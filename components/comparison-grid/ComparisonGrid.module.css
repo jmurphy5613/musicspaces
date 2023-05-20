@@ -7,12 +7,14 @@
 
 .items {
     display: flex;
+    margin-top: 1.5rem;
 }
 
 .item-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 1rem;
 }
 
 
@@ -27,7 +29,6 @@
 .image-container {
     height: 10rem;
     width: 10rem;
-    margin-top: 5rem;
     position: relative;
 }
 
