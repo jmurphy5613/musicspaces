@@ -1,0 +1,40 @@
+.similarity {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.items {
+    display: flex;
+}
+
+.item-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.similarity-header {
+    font-size: 2rem;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    margin-top: 2rem;
+}
+
+.image-container {
+    height: 10rem;
+    width: 10rem;
+    margin-top: 5rem;
+    position: relative;
+}
+
+.name {
+    font-size: 1.5rem;
+    color: #9CA3AF;
+    margin-top: 0.5rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+}

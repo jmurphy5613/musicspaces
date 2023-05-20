@@ -46,3 +46,8 @@ export interface RecentlyPlayedStats {
     uniqueArtists: number,
     totalTracks: number
 }
+
+export interface ComparisonData {
+    name: string,
+    image: string,
+}

@@ -4,4 +4,68 @@
     background: linear-gradient(90deg, #171A38 0%, #111328 50.52%, #171A38 100%);    border-radius: 25px;
     display: flex;
     margin-top: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+}
+
+.pfp-container {
+    position: relative;
+    height: 10rem;
+    width: 10rem;
+}
+
+.username {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-top: 0.5rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+}
+
+.compatability-container {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.parent-bar {
+    height: 12rem;
+    width: 1.5rem;
+    border-radius: 3rem;
+    background-color: #292929;
+    display: flex;
+    align-items: end;
+}
+
+.child-bar {
+    height: 50%;
+    width: 100%;
+    border-radius: 3rem;
+    background-color: #A7B2FF;
+    transition: height 3s;
+}
+
+.compatability {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-top: 0.5rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+}
+
+.compatability-description {
+    color: #9CA3AF;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
 }
