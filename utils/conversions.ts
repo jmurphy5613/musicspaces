@@ -12,9 +12,10 @@ const msToMinutes = (ms: number) => {
 }
 
 export const get24HoursAgoUnix = () => {
-    const date = new Date()
-    date.setDate(date.getDate() - 1)
-    return Math.floor(date.getTime() / 1000)
+  const currentTimestamp = Date.now();
+  const twentyFourHoursAgo = currentTimestamp - 24 * 60 * 60 * 1000;
+  const unixTimeSeconds = Math.floor(twentyFourHoursAgo / 1000);
+  return unixTimeSeconds;
 }
 
 export const recentlyPlayedToStats = (recentlyPlayed: Array<RecentlyPlayedTrack>) => {
@@ -23,9 +24,7 @@ export const recentlyPlayedToStats = (recentlyPlayed: Array<RecentlyPlayedTrack>
     console.log(recentlyPlayed)
     for(const track of recentlyPlayed) {
         totalLength += track.track.duration_ms
-        for(const artist of track.track.artists) {
-            uniqueArtists.add(artist.name)
-        }
+        uniqueArtists.add(track.track.artists[0].name)
     }
     return {
         totalLength: msToMinutes(totalLength),

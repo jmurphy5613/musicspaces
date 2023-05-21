@@ -49,6 +49,9 @@ export const getUserInfo = async (): Promise<UserInfo> => {
 }
 
 export const getRecentlyPlayed = async (): Promise<RecentlyPlayedTrack[]> => {
+
+    console.log(get24HoursAgoUnix())
+
     try {
         const options = {
             url: 'https://api.spotify.com/v1/me/player/recently-played',

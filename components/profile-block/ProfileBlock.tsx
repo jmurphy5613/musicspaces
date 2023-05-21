@@ -4,7 +4,7 @@ import { useRef, useEffect, useState, use } from 'react'
 import { CountUp, CountUpOptions } from "countup.js"
 import { RecentlyPlayedStats, UserInfo } from "../../utils/types"
 import { getUserInfo, getRecentlyPlayed } from "../../utils/requests/users"
-import { recentlyPlayedToStats } from "../../utils/conversions"
+import { get24HoursAgoUnix, recentlyPlayedToStats } from "../../utils/conversions"
 
 const ProfileBlock = () => {
 
@@ -19,9 +19,18 @@ const ProfileBlock = () => {
 
     const [dataFetched, setDataFetched] = useState(false)
 
+
     const fetchUserInfo = async () => {
         const userInfo = await getUserInfo()
         const recentlyPlayed = await getRecentlyPlayed()
+        //iterate through each recently played song and print the unix timestamp
+        recentlyPlayed.forEach((item) => {
+            const date =new Date(item.played_at)
+            const unixTimeSeconds = Math.floor(date.getTime() / 1000);
+            if(unixTimeSeconds < get24HoursAgoUnix()) {
+                recentlyPlayed.pop()
+            }
+        })
         const stats:RecentlyPlayedStats = recentlyPlayedToStats(recentlyPlayed)
         console.log(stats)
         setRecentStats(stats)

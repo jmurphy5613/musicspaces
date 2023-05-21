@@ -20,7 +20,7 @@ export interface Track {
         name: string
     }>,
     name: string,
-    duration_ms: number
+    duration_ms: number,
 }
 
 export interface UserInfo {
@@ -38,7 +38,8 @@ export interface UserInfo {
 }
 
 export interface RecentlyPlayedTrack {
-    track: Track
+    track: Track,
+    played_at: string
 }
 
 export interface RecentlyPlayedStats {
