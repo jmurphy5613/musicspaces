@@ -10,7 +10,7 @@ interface ComparisonGridProps {
 const ComparisonGrid:React.FC<ComparisonGridProps> = ({ gridItems, title }) => {
     return (
         <div className={styles.similarity}>
-            <h1 className={styles["similarity-header"]}>Common Artists</h1>
+            <h1 className={styles["similarity-header"]}>{title}</h1>
             <div className={styles.items}>
                 {gridItems.map((item, index) => {
                     return (
