@@ -14,7 +14,7 @@ const ComparisonGrid:React.FC<ComparisonGridProps> = ({ gridItems, title }) => {
             <div className={styles.items}>
                 {gridItems.map((item, index) => {
                     return (
-                        <div className={styles["item-container"]}>
+                        <div key={index} className={styles["item-container"]}>
                             <div className={styles["image-container"]}>
                                 <Image 
                                     src={item.image}

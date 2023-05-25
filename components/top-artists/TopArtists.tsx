@@ -43,7 +43,7 @@ const TopArtists = () => {
             <div className={styles["top-artist-list"]}>
                 {topArtists.map((artist: Artist, index) => {
                     return (
-                        <div className={styles["artist-item"]} data-aos="fade-up" data-aos-delay={index*100} data-aos-once="true">
+                        <div key={index} className={styles["artist-item"]} data-aos="fade-up" data-aos-delay={index*100} data-aos-once="true">
                             <h2 className={styles.number}>{index + 1}.</h2>
                             <div className={styles["icon-container"]}>
                                 <Image 

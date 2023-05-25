@@ -24,7 +24,7 @@ const TimeControl:React.FC<TimeControlProps> = ({ currentTime, setTime, callback
         <div className={styles.container}>
             {times.map((time, index) => {
                 return (
-                    <div className={styles["time-item"]}>
+                    <div className={styles["time-item"]} key={index}>
                         {currentTime == time.label ? 
                             <div className={styles.time}>
                                 <h2 className={styles.activated}>{time.label}</h2>

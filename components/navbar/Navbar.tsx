@@ -1,5 +1,6 @@
 import styles from './Navbar.module.css'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Navbar = () => {
     return (
@@ -15,9 +16,9 @@ const Navbar = () => {
                 <h1 className={styles.title}>Musicspaces</h1>
             </div>
             <div className={styles.middle}>
-                <a href="/friends" className={styles.link}>Friends</a>
-                <a href="/suggestions" className={styles.link}>Suggestions</a>
-                <a href="/analytics" className={styles.link}>Analytics</a>  
+                <Link href="/friends" className={styles.link}>Friends</Link>
+                <Link href="/suggestions" className={styles.link}>Suggestions</Link>
+                <Link href="/analytics" className={styles.link}>Analytics</Link>  
             </div>
             <div className={styles.right}>
                 <button className={styles["app-button"]}>Open App</button>

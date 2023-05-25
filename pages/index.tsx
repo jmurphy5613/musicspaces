@@ -102,7 +102,7 @@ export default function Home() {
                         <div className={styles["slider-animation"]}>
                             {duplicatedUserItems.map((item, index) => {
                                 return (
-                                    <div className={styles.user}>
+                                    <div className={styles.user} key={index}>
                                         <div className={styles["profile-image-container"]}>
                                             <Image
                                                 fill 
