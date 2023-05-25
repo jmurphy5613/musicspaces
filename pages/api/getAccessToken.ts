@@ -17,7 +17,7 @@ export default async function handler(
         },
         params: {
             code: req.query.code,
-            redirect_uri: 'http://localhost:3000',
+            redirect_uri: 'https://musicspaces.vercel.app',
             grant_type: 'authorization_code'
         }
     }
