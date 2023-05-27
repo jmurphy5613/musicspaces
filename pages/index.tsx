@@ -8,6 +8,7 @@ import 'aos/dist/aos.css';
 import AOS, { refresh } from 'aos'
 import { duplicatedUserItems } from "../utils/data";
 import { refreshToken } from "../utils/requests/auth";
+import UsernamePopup from "../components/username-popup/UsernamePopup";
 
 export default function Home() {
     const router = useRouter();
@@ -52,6 +53,7 @@ export default function Home() {
 
     return (
         <>
+            <UsernamePopup />
             <Navbar />
             <div className={styles.container}>
                 <div className={styles["background-images"]}>

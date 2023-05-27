@@ -1,0 +1,57 @@
+.container {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    background-color: rgb(18, 19, 30, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-container {
+    width: 43vw;
+    height: 30vh;
+    background-color: #1E1E1E;
+    border: 1px solid #5F5F5F;
+    border-radius: 25px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title {
+    font-family: 'Outfit';
+    font-size: 32px;
+    color: #FFFFFF;
+    font-weight: 400;
+}
+
+.purple {
+    color: #A7B2FF;
+}
+
+.username-input {
+    width: 70%;
+    border: 1px solid #FFFFFF;
+    height: 1.75rem;
+    background-color: transparent;
+    border-radius: 3rem;
+    outline: none;
+    padding-left: 0.75rem;
+    font-family: "Outfit", sans-serif;
+    color: #9CA3AF;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.link-title {
+    font-family: 'Outfit';
+    font-size: 16px;
+    color: #FFFFFF;
+    font-weight: 400;
+}
+
+
