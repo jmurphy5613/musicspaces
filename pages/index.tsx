@@ -9,6 +9,7 @@ import AOS, { refresh } from 'aos'
 import { duplicatedUserItems } from "../utils/data";
 import { refreshToken } from "../utils/requests/auth";
 import UsernamePopup from "../components/username-popup/UsernamePopup";
+import { getUserByRegreshToken } from "../utils/requests/credentials";
 
 export default function Home() {
     const router = useRouter();
@@ -17,9 +18,20 @@ export default function Home() {
 
     const getToken = async (code: string) => {
         const data = await getAccessToken(code as string)
+        console.log(data)
         localStorage.setItem('access_token', data.access_token)
         localStorage.setItem('refresh_token', data.refresh_token)
-        router.push('/jmurphy5613')
+
+        //check if the user already exists in the database
+        const user = await getUserByRegreshToken(data.refresh_token)
+        console.log(user)
+        if (user) {
+            router.push(`/${user.musicspacesUsername}`)
+        } else {
+            setShowModal(true)
+        }
+
+        return data
     }
 
     const handleLogin = async () => {
@@ -53,7 +65,7 @@ export default function Home() {
 
     return (
         <>
-            {/* <UsernamePopup /> */}
+            {showModal && <UsernamePopup />}
             <Navbar />
             <div className={styles.container}>
                 <div className={styles["background-images"]}>

@@ -3,7 +3,7 @@ import styles from './ProfileBlock.module.css'
 import { useRef, useEffect, useState, use } from 'react'
 import { CountUp, CountUpOptions } from "countup.js"
 import { RecentlyPlayedStats, UserInfo } from "../../utils/types"
-import { getUserInfo, getRecentlyPlayed } from "../../utils/requests/users"
+import { getUserInfo, getRecentlyPlayed } from "../../utils/requests/userData"
 import { get24HoursAgoUnix, recentlyPlayedToStats } from "../../utils/conversions"
 
 const ProfileBlock = () => {
@@ -25,13 +25,13 @@ const ProfileBlock = () => {
         const recentlyPlayed = await getRecentlyPlayed()
         //iterate through each recently played song and print the unix timestamp
         recentlyPlayed.forEach((item) => {
-            const date =new Date(item.played_at)
+            const date = new Date(item.played_at)
             const unixTimeSeconds = Math.floor(date.getTime() / 1000);
-            if(unixTimeSeconds < get24HoursAgoUnix()) {
+            if (unixTimeSeconds < get24HoursAgoUnix()) {
                 recentlyPlayed.pop()
             }
         })
-        const stats:RecentlyPlayedStats = recentlyPlayedToStats(recentlyPlayed)
+        const stats: RecentlyPlayedStats = recentlyPlayedToStats(recentlyPlayed)
         console.log(stats)
         setRecentStats(stats)
         setUserInfo(userInfo)
@@ -47,7 +47,7 @@ const ProfileBlock = () => {
     }, [dataFetched])
 
     //create options variable for countup
-    const options:CountUpOptions = {
+    const options: CountUpOptions = {
         duration: 2,
         useEasing: true,
         useGrouping: true,
@@ -55,14 +55,14 @@ const ProfileBlock = () => {
 
 
     async function initCountUps() {
-        if(!recentStats?.totalLength || !recentStats?.uniqueArtists) return console.error('recent stats not loaded')
+        if (!recentStats?.totalLength || !recentStats?.uniqueArtists) return console.error('recent stats not loaded')
 
         const countUpModule = await import('countup.js');
         countup = new countUpModule.CountUp(countupRef1.current, recentStats.totalTracks, options)
         countup2 = new countUpModule.CountUp(countupRef2.current, recentStats.uniqueArtists, options)
         if (!countup.error && !countup2.error) {
             countup.start()
-            countup2.start()    
+            countup2.start()
         } else {
             console.error(countup.error)
         }
@@ -82,30 +82,30 @@ const ProfileBlock = () => {
                 </div>
                 <h3 className={styles["spotify-button-label"]}>open in spotify</h3>
             </button>
-            
+
             <div className={styles["user-info-container"]}>
                 {userInfo &&
-                <>
-                    <div className={styles["image-container"]}>
-                        <Image
-                            src={userInfo.images[0].url}
-                            alt='profile picture'
-                            fill
-                            style={{ borderRadius: '100%' }}
-                        />
-                    </div>
-                    <div className={styles["user-description"]}>
-                        <div style={{ display: 'flex', alignItems: 'flex-end', width: '50%' }}>
-                            <h1 className={styles.name}>{userInfo.display_name}</h1>
-                            <h3 className={styles.username}>{`@${userInfo.id}`}</h3>
+                    <>
+                        <div className={styles["image-container"]}>
+                            <Image
+                                src={userInfo.images[0].url}
+                                alt='profile picture'
+                                fill
+                                style={{ borderRadius: '100%' }}
+                            />
                         </div>
-                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                            <h3 className={styles["following-stat"]} style={{ padding: '0.5rem', paddingLeft: '0' }}>{userInfo.followers.total} followers</h3>
-                            {/* <h3>•</h3>
+                        <div className={styles["user-description"]}>
+                            <div style={{ display: 'flex', alignItems: 'flex-end', width: '50%' }}>
+                                <h1 className={styles.name}>{userInfo.display_name}</h1>
+                                <h3 className={styles.username}>{`@${userInfo.id}`}</h3>
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <h3 className={styles["following-stat"]} style={{ padding: '0.5rem', paddingLeft: '0' }}>{userInfo.followers.total} followers</h3>
+                                {/* <h3>•</h3>
                             <h3 className={styles["following-stat"]} style={{ padding: '0.5rem' }}>6 following</h3> */}
+                            </div>
                         </div>
-                    </div>
-                </>}
+                    </>}
 
             </div>
             <div className={styles["user-facts"]}>

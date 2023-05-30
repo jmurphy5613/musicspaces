@@ -4,7 +4,7 @@ import TimeControl from '../time-control/TimeControl'
 import Image from 'next/image'
 import AOS from 'aos'
 import { durationToSpotfyFormat } from '../../utils/conversions'
-import { getTopArtists } from '../../utils/requests/users'
+import { getTopArtists } from '../../utils/requests/userData'
 import { Artist } from '../../utils/types'
 
 const TopArtists = () => {
@@ -33,7 +33,7 @@ const TopArtists = () => {
         fetchTopArtists(time)
     }, [time])
 
-    if(!topArtists || topArtists.length === 0) return <></>
+    if (!topArtists || topArtists.length === 0) return <></>
 
     return (
         <div className={styles.container}>
@@ -43,10 +43,10 @@ const TopArtists = () => {
             <div className={styles["top-artist-list"]}>
                 {topArtists.map((artist: Artist, index) => {
                     return (
-                        <div key={index} className={styles["artist-item"]} data-aos="fade-up" data-aos-delay={index*100} data-aos-once="true">
+                        <div key={index} className={styles["artist-item"]} data-aos="fade-up" data-aos-delay={index * 100} data-aos-once="true">
                             <h2 className={styles.number}>{index + 1}.</h2>
                             <div className={styles["icon-container"]}>
-                                <Image 
+                                <Image
                                     src={artist.images[0].url}
                                     fill
                                     alt='icon'
@@ -62,7 +62,7 @@ const TopArtists = () => {
                 <h1 className={styles["top-artist-title"]}>Your Top Artist</h1>
                 <h2 className={styles["top-artist-name"]}>{topArtists[0].name}</h2>
                 <div className={styles["top-artist-icon-container"]}>
-                    <Image 
+                    <Image
                         src={topArtists[0].images[0].url}
                         fill
                         alt='icon'
