@@ -34,7 +34,7 @@
 }
 
 .username-input {
-    width: 70%;
+    width: 100%;
     border: 1px solid #FFFFFF;
     height: 1.75rem;
     background-color: transparent;
@@ -49,9 +49,37 @@
 
 .link-title {
     font-family: 'Outfit';
-    font-size: 16px;
+    font-size: 1.25rem;
     color: #FFFFFF;
     font-weight: 400;
+}
+
+.continue-button {
+    width: 8rem;
+    height: 2.25rem;
+    background-color: #A7B2FF;
+    border-radius: 0.5rem;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left: auto;
+
+}
+
+.button-label {
+    color: black;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    position: relative;
+    bottom: 0.1rem;
+}
+
+.icon-container {
+    position: relative;
+    height: 1.5rem;
+    width: 1.5rem;
 }
 
 
