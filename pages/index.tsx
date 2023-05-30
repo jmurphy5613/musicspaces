@@ -53,7 +53,7 @@ export default function Home() {
 
     return (
         <>
-            <UsernamePopup />
+            {/* <UsernamePopup /> */}
             <Navbar />
             <div className={styles.container}>
                 <div className={styles["background-images"]}>
