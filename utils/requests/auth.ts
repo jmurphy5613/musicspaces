@@ -1,7 +1,8 @@
 import axios from "axios"
 import { NextRouter } from "next/router"
+import { SpotifyAuthResponse } from "../types"
 
-export const getAccessToken = async (code: string | string[]) => {
+export const getAccessToken = async (code: string | string[]): Promise<SpotifyAuthResponse> => {
 	let options = {
 		url: '/api/getAccessToken',
 		method: 'GET',
