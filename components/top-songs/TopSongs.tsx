@@ -8,8 +8,11 @@ import { Track } from '../../utils/types'
 import { getTopSongs } from '../../utils/requests/userData'
 import { durationToSpotfyFormat } from '../../utils/conversions'
 
+interface TopSongsProps {
+    musicspacesUsername: string
+}
 
-const TopSongs = () => {
+const TopSongs:React.FC<TopSongsProps> = ({ musicspacesUsername }) => {
 
     const [time, setTime] = useState('4 weeks')
 
@@ -17,7 +20,7 @@ const TopSongs = () => {
 
     const fetchTopSongs = async (currentTime: string) => {
         const timePeriod = durationToSpotfyFormat(currentTime)
-        const songs = await getTopSongs(timePeriod)
+        const songs = await getTopSongs(timePeriod, musicspacesUsername)
         setTopSongs(songs)
     }
 

@@ -7,7 +7,11 @@ import { durationToSpotfyFormat } from '../../utils/conversions'
 import { getTopArtists } from '../../utils/requests/userData'
 import { Artist } from '../../utils/types'
 
-const TopArtists = () => {
+interface TopArtistsProps {
+    musicspacesUsername: string
+}
+
+const TopArtists:React.FC<TopArtistsProps> = ({ musicspacesUsername }) => {
 
     const [time, setTime] = useState('4 weeks')
 
@@ -16,7 +20,8 @@ const TopArtists = () => {
 
     const fetchTopArtists = async (currentTime: string) => {
         const timePeriod = durationToSpotfyFormat(currentTime)
-        const topArtists = await getTopArtists(timePeriod)
+        const topArtists = await getTopArtists(timePeriod, musicspacesUsername)
+        console.log(topArtists)
         setTopArtists(topArtists)
     }
 
@@ -47,10 +52,10 @@ const TopArtists = () => {
                             <h2 className={styles.number}>{index + 1}.</h2>
                             <div className={styles["icon-container"]}>
                                 <Image
-                                    src={artist.images[0].url}
-                                    fill
-                                    alt='icon'
-                                    style={{ borderRadius: '5px' }}
+                                        src={artist.images[0].url}
+                                        fill
+                                        alt='icon'
+                                        style={{ borderRadius: '5px' }}
                                 />
                             </div>
                             <h2 className={styles.name}>{artist.name}</h2>

@@ -1,33 +1,22 @@
 import axios from 'axios';
 import { Artist, UserInfo, Track, RecentlyPlayedTrack } from '../types';
 import { get24HoursAgoUnix } from '../conversions';
+import { apiURL } from '../constants';
 
-export const getTopArtists = async (time_range: string): Promise<Artist[]> => {
-
-
-    console.log(localStorage.getItem("access_token"))
-
+export const getTopArtists = async (time_range: string, musicspacesUsername: string): Promise<Artist[]> => {
     try {
+        console.log(time_range, musicspacesUsername)
         const options = {
-            url: 'https://api.spotify.com/v1/me/top/artists',
+            url: `${apiURL}/spotify/top-artists/${time_range}/${musicspacesUsername}`,
             method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('access_token')
-            },
-            params: {
-                limit: 10,
-                time_range: time_range,
-                offset: 0
-            }
         }
-    
+
         const res = await axios(options)
-        return res.data.items as Artist[]
+        return res.data as Artist[]
     } catch (error) {
         console.log(error)
-        throw new Error('Failed to get top artists');
+        throw new Error('Failed to get top songs');
     }
-
 }
 
 export const getUserInfo = async (): Promise<UserInfo> => {
@@ -73,23 +62,15 @@ export const getRecentlyPlayed = async (): Promise<RecentlyPlayedTrack[]> => {
     }
 }
 
-export const getTopSongs = async (time_range: string): Promise<Track[]> => {
+export const getTopSongs = async (time_range: string, musicspacesUsername: string): Promise<Track[]> => {
     try {
         const options = {
-            url: 'https://api.spotify.com/v1/me/top/tracks',
+            url: `${apiURL}/spotify/top-tracks/${time_range}/${musicspacesUsername}`,
             method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('access_token')
-            },
-            params: {
-                limit: 10,
-                time_range: time_range,
-                offset: 0
-            }
         }
 
         const res = await axios(options)
-        return res.data.items as Track[]
+        return res.data as Track[]
     } catch (error) {
         console.log(error)
         throw new Error('Failed to get top songs');
