@@ -39,8 +39,6 @@ export default function Home() {
         const currentRefreshToken = localStorage.getItem('refresh_token')
 
         if (currentRefreshToken != null) {
-            const newAccessToken = await refreshToken(currentRefreshToken)
-            localStorage.setItem('access_token', newAccessToken.access_token)
             router.push('/jmurphy5613')
         } else {
             auth(router)

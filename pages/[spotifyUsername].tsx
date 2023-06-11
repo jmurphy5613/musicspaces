@@ -13,6 +13,8 @@ const Profile = () => {
 
     useEffect(() => {
         AOS.init()
+
+        
     }, [])
 
     return (

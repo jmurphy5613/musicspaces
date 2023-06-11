@@ -3,10 +3,13 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { createUser } from '../../utils/requests/credentials'
 import { getUserInfo } from '../../utils/requests/userData'
+import { useRouter } from 'next/router'
 
 const UsernamePopup = () => {
 
     const [usernameEntered, setUsernameEntered] = useState('')
+
+    const router = useRouter()
 
     const handleContinue = async () => {
         const userData = await getUserInfo()
@@ -17,6 +20,7 @@ const UsernamePopup = () => {
             refreshToken: localStorage.getItem('refresh_token') as string,
             accessTokenExpiration: new Date(Date.now() + 3600 * 1000)
         })
+        router.push(`/${usernameEntered}`)
     }
 
     return (
