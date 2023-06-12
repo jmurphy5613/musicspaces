@@ -27,6 +27,7 @@ const ProfileBlock:React.FC<ProfileBlockProps> = ({ musicspacesUsername }) => {
     const fetchUserInfo = async () => {
         const userInfo = await getUserInfo(musicspacesUsername)
         const recentlyPlayed = await getRecentlyPlayed(musicspacesUsername)
+        console.log(recentlyPlayed, userInfo)
         //iterate through each recently played song and print the unix timestamp
         recentlyPlayed.forEach((item) => {
             const date = new Date(item.played_at)
@@ -36,7 +37,6 @@ const ProfileBlock:React.FC<ProfileBlockProps> = ({ musicspacesUsername }) => {
             }
         })
         const stats: RecentlyPlayedStats = recentlyPlayedToStats(recentlyPlayed)
-        console.log(stats)
         setRecentStats(stats)
         setUserInfo(userInfo)
         setDataFetched(true)

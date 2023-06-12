@@ -2,17 +2,20 @@ import styles from './UsernamePopup.module.css'
 import { useState } from 'react'
 import Image from 'next/image'
 import { createUser } from '../../utils/requests/credentials'
-import { getUserInfo } from '../../utils/requests/userData'
 import { useRouter } from 'next/router'
+import { UserInfo } from '../../utils/types'
 
-const UsernamePopup = () => {
+interface UsernamePopupProps {
+    userData: UserInfo
+}
+
+const UsernamePopup:React.FC<UsernamePopupProps> = ({ userData }) => {
 
     const [usernameEntered, setUsernameEntered] = useState('')
 
     const router = useRouter()
 
     const handleContinue = async () => {
-        const userData = await getUserInfo()
         createUser({
             spotifyUsername: userData.id,
             musicspacesUsername: usernameEntered,

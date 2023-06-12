@@ -37,22 +37,33 @@ export const getUserInfo = async (musicspacesUsername: string): Promise<UserInfo
     }
 }
 
+export const getUserInfoFromToken = async (access_token: string): Promise<UserInfo> => {
+    try {
+        const options = {
+            url: 'https://api.spotify.com/v1/me',
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + access_token
+            },
+        }
+
+        const res = await axios(options)
+        return res.data as UserInfo
+    } catch (error) {
+        console.log(error)
+        throw new Error('Failed to get profile info');
+    }
+}
+
 export const getRecentlyPlayed = async (musicspacesUsername: string): Promise<RecentlyPlayedTrack[]> => {
     try {
         const options = {
             url: `${apiURL}/spotify/recently-played/${musicspacesUsername}`,
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('access_token')
-            },
-            params: {
-                limit: 50,
-                after: get24HoursAgoUnix()
-            }
+            method: 'GET'
         }
 
         const res = await axios(options)
-        return res.data.items as RecentlyPlayedTrack[]
+        return res.data as RecentlyPlayedTrack[]
     } catch (error) {
         console.log(error)
         throw new Error('Failed to get recently played');

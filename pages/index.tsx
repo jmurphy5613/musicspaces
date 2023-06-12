@@ -5,16 +5,18 @@ import { getAccessToken, auth } from "../utils/requests/auth";
 import Navbar from "../components/navbar/Navbar";
 import Image from "next/image";
 import 'aos/dist/aos.css';
-import AOS, { refresh } from 'aos'
+import AOS from 'aos'
 import { duplicatedUserItems } from "../utils/data";
-import { refreshToken } from "../utils/requests/auth";
 import UsernamePopup from "../components/username-popup/UsernamePopup";
 import { getUserByRegreshToken } from "../utils/requests/credentials";
+import { getUserInfoFromToken } from "../utils/requests/userData";
+import { UserInfo } from "../utils/types";
 
 export default function Home() {
     const router = useRouter();
 
     const [showModal, setShowModal] = useState(false)
+    const [userData, setUserData] = useState<UserInfo>()
 
     const getToken = async (code: string) => {
         const data = await getAccessToken(code as string)
@@ -28,6 +30,9 @@ export default function Home() {
         if (user) {
             router.push(`/${user.musicspacesUsername}`)
         } else {
+            //get the spotify username and show the username popup
+            const userData = await getUserInfoFromToken(data.access_token)
+            setUserData(userData)
             setShowModal(true)
         }
 
@@ -63,7 +68,7 @@ export default function Home() {
 
     return (
         <>
-            {showModal && <UsernamePopup />}
+            {showModal && userData && <UsernamePopup userData={userData} />}
             <Navbar />
             <div className={styles.container}>
                 <div className={styles["background-images"]}>
