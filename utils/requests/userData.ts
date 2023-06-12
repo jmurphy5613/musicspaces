@@ -19,10 +19,10 @@ export const getTopArtists = async (time_range: string, musicspacesUsername: str
     }
 }
 
-export const getUserInfo = async (): Promise<UserInfo> => {
+export const getUserInfo = async (musicspacesUsername: string): Promise<UserInfo> => {
     try {
         const options = {
-            url: 'https://api.spotify.com/v1/me',
+            url: `${apiURL}/spotify/user-info/${musicspacesUsername}`,
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token')
@@ -37,13 +37,10 @@ export const getUserInfo = async (): Promise<UserInfo> => {
     }
 }
 
-export const getRecentlyPlayed = async (): Promise<RecentlyPlayedTrack[]> => {
-
-    console.log(get24HoursAgoUnix())
-
+export const getRecentlyPlayed = async (musicspacesUsername: string): Promise<RecentlyPlayedTrack[]> => {
     try {
         const options = {
-            url: 'https://api.spotify.com/v1/me/player/recently-played',
+            url: `${apiURL}/spotify/recently-played/${musicspacesUsername}`,
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token')

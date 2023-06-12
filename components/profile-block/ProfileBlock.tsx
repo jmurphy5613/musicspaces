@@ -6,7 +6,11 @@ import { RecentlyPlayedStats, UserInfo } from "../../utils/types"
 import { getUserInfo, getRecentlyPlayed } from "../../utils/requests/userData"
 import { get24HoursAgoUnix, recentlyPlayedToStats } from "../../utils/conversions"
 
-const ProfileBlock = () => {
+interface ProfileBlockProps {
+    musicspacesUsername: string
+}
+
+const ProfileBlock:React.FC<ProfileBlockProps> = ({ musicspacesUsername }) => {
 
     const countupRef1 = useRef('0')
     const countupRef2 = useRef('0')
@@ -21,8 +25,8 @@ const ProfileBlock = () => {
 
 
     const fetchUserInfo = async () => {
-        const userInfo = await getUserInfo()
-        const recentlyPlayed = await getRecentlyPlayed()
+        const userInfo = await getUserInfo(musicspacesUsername)
+        const recentlyPlayed = await getRecentlyPlayed(musicspacesUsername)
         //iterate through each recently played song and print the unix timestamp
         recentlyPlayed.forEach((item) => {
             const date = new Date(item.played_at)

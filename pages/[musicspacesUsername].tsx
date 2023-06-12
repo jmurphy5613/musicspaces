@@ -34,7 +34,7 @@ const Profile = () => {
         <>
             <Navbar />
             <div className={styles.container}>
-                <ProfileBlock />
+                <ProfileBlock musicspacesUsername={username} />
                 <div className={styles["content-container"]}>
                     <ProfileTabs currentTab={currentTab} setUserTab={setUserTab} />
                     {
