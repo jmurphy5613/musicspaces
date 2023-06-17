@@ -58,7 +58,8 @@ export interface UserCredentials {
     musicspacesUsername: string
     accessToken: string
     refreshToken: string
-    accessTokenExpiration: Date
+    accessTokenExpiration: Date,
+    profilePicture: string
 }
 
 export interface SpotifyAuthResponse {

@@ -21,7 +21,8 @@ const UsernamePopup:React.FC<UsernamePopupProps> = ({ userData }) => {
             musicspacesUsername: usernameEntered,
             accessToken: localStorage.getItem('access_token') as string,
             refreshToken: localStorage.getItem('refresh_token') as string,
-            accessTokenExpiration: new Date(Date.now() + 3600 * 1000)
+            accessTokenExpiration: new Date(Date.now() + 3600 * 1000),
+            profilePicture: userData.images[0].url ?? '',
         })
         router.push(`/${usernameEntered}`)
     }

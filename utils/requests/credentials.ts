@@ -15,6 +15,7 @@ export const createUser = async (userData: UserCredentials) => {
             accessToken: userData.accessToken,
             refreshToken: userData.refreshToken,
             accessTokenExpiration: userData.accessTokenExpiration,
+            profilePicture: userData.profilePicture
         }
     }
     const res = await axios(options)
