@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 
 const Profile = () => {
 
-    const [currentTab, setUserTab] = useState('Top Artists')
+    const [currentTab, setUserTab] = useState('Top Songs')
     const [username, setUsername] = useState('')
 
     const router = useRouter()

@@ -1,5 +1,5 @@
 import axios from "axios"
-import { UserCredentials } from "../types"
+import { UserCredentials, UserInfo } from "../types"
 import { apiURL } from "../constants"
 
 export const createUser = async (userData: UserCredentials) => {
@@ -20,6 +20,18 @@ export const createUser = async (userData: UserCredentials) => {
     }
     const res = await axios(options)
     return res.data.response
+}
+
+export const getAllUsers = async (): Promise<UserCredentials[]> => {
+    let options = {
+        url: `${apiURL}/users/get-all`,
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }
+    const res = await axios(options)
+    return res.data
 }
 
 export const getUserByRegreshToken = async (refreshToken: string): Promise<UserCredentials> => {
