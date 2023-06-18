@@ -41,8 +41,8 @@ const People = () => {
                 <div className={styles["user-grid"]}>
                     {filteredUsers.map((item, index) => {
                         return (
-                            <Link href={`/${item.musicspacesUsername}`}>
-                                <div key={index} className={styles["user-container"]}>
+                            <Link key={index} href={`/${item.musicspacesUsername}`}>
+                                <div className={styles["user-container"]}>
                                     <div className={styles["image-container"]}>
                                         <Image 
                                             src={item.profilePicture}
