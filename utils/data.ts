@@ -1,4 +1,5 @@
 import { type } from "os"
+import { UserCredentials } from "./types"
 
 export const topSongs = [
     {
@@ -114,11 +115,11 @@ export const userItem: UserItem[] = [
     },
 ]
 
-export const duplicatedUserItems: UserItem[] = userItem.flatMap((obj: UserItem) => {
-    const duplicatedObjs = [];
+export const duplicatedUserItems = (users: UserCredentials[]) => {
+    let duplicatedUsers: UserCredentials[] = []
     for (let i = 0; i < 10; i++) {
-      duplicatedObjs.push({...obj});
+        duplicatedUsers = duplicatedUsers.concat(users)
     }
-    return duplicatedObjs;
-});
+    return duplicatedUsers
+}
 

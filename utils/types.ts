@@ -52,3 +52,20 @@ export interface ComparisonData {
     name: string,
     image: string,
 }
+
+export interface UserCredentials {
+    spotifyUsername: string
+    musicspacesUsername: string
+    accessToken: string
+    refreshToken: string
+    accessTokenExpiration: Date,
+    profilePicture: string
+}
+
+export interface SpotifyAuthResponse {
+    access_token: string,
+    token_type: string,
+    scope: string,
+    expires_in: number,
+    refresh_token: string
+}

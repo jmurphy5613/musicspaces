@@ -5,21 +5,38 @@ import { getAccessToken, auth } from "../utils/requests/auth";
 import Navbar from "../components/navbar/Navbar";
 import Image from "next/image";
 import 'aos/dist/aos.css';
-import AOS, { refresh } from 'aos'
-import { duplicatedUserItems } from "../utils/data";
-import { refreshToken } from "../utils/requests/auth";
+import AOS from 'aos'
+import { duplicatedUserItems, userItem } from "../utils/data";
 import UsernamePopup from "../components/username-popup/UsernamePopup";
+import { getUserByRegreshToken } from "../utils/requests/credentials";
+import { getUserInfoFromToken } from "../utils/requests/userData";
+import { UserCredentials, UserInfo } from "../utils/types";
+import { getAllUsers } from "../utils/requests/credentials";
 
 export default function Home() {
     const router = useRouter();
 
     const [showModal, setShowModal] = useState(false)
+    const [userData, setUserData] = useState<UserInfo>()
+    const [registeredUsers, setRegisteredUsers] = useState<UserCredentials[]>()
 
     const getToken = async (code: string) => {
         const data = await getAccessToken(code as string)
         localStorage.setItem('access_token', data.access_token)
         localStorage.setItem('refresh_token', data.refresh_token)
-        router.push('/jmurphy5613')
+
+        //check if the user already exists in the database
+        const user = await getUserByRegreshToken(data.refresh_token)
+        if (user) {
+            router.push(`/${user.musicspacesUsername}`)
+        } else {
+            //get the spotify username and show the username popup
+            const userData = await getUserInfoFromToken(data.access_token)
+            setUserData(userData)
+            setShowModal(true)
+        }
+
+        return data
     }
 
     const handleLogin = async () => {
@@ -27,21 +44,23 @@ export default function Home() {
         const currentRefreshToken = localStorage.getItem('refresh_token')
 
         if (currentRefreshToken != null) {
-            const newAccessToken = await refreshToken(currentRefreshToken)
-            localStorage.setItem('access_token', newAccessToken.access_token)
             router.push('/jmurphy5613')
         } else {
             auth(router)
         }
     }
 
-
-
+    const fetchUsers = async () => {
+        const users = await getAllUsers()
+        setRegisteredUsers(users)
+    }
 
     useEffect(() => {
-
         AOS.init()
+        fetchUsers()
+    }, [])
 
+    useEffect(() => {
         //get code router parameter and send it to getAccessToken
         if (router.isReady) {
             const code = router.query.code;
@@ -51,9 +70,11 @@ export default function Home() {
         }
     }, [router.isReady])
 
+    if(!registeredUsers) return <></>
+
     return (
         <>
-            {/* <UsernamePopup /> */}
+            {showModal && userData && <UsernamePopup userData={userData} />}
             <Navbar />
             <div className={styles.container}>
                 <div className={styles["background-images"]}>
@@ -102,18 +123,18 @@ export default function Home() {
                     <h2 className={styles["registered-title"]}>Join these recent users:</h2>
                     <div className={styles["slider-container"]}>
                         <div className={styles["slider-animation"]}>
-                            {duplicatedUserItems.map((item, index) => {
+                            {duplicatedUserItems(registeredUsers).map((item, index) => {
                                 return (
                                     <div className={styles.user} key={index}>
                                         <div className={styles["profile-image-container"]}>
                                             <Image
                                                 fill 
-                                                src={item.image}
+                                                src={item.profilePicture}
                                                 alt="user-image"
                                                 style={{ borderRadius: '100%' }}
                                             />
                                         </div>
-                                        <h3 className={styles.username}>{item.username}</h3>
+                                        <h3 className={styles.username}>{item.musicspacesUsername}</h3>
                                     </div>
                                 )
                             })}

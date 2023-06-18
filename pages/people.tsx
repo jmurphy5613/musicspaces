@@ -2,14 +2,34 @@ import styles from '../styles/People.module.css'
 import Navbar from '../components/navbar/Navbar'
 import Image from 'next/image'
 import { userItem } from '../utils/data'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { getAllUsers } from '../utils/requests/credentials'
+import { UserCredentials } from '../utils/types'
+import Link from 'next/link'
 
 const People = () => {
 
     const [searchBarValue, setSearchBarValue] = useState<string>("")
+    const [users, setUsers] = useState<UserCredentials[]>()
 
-    const filteredUsers = userItem.filter(item => {
-        return item.username.toLowerCase().includes(searchBarValue.toLowerCase())
+
+
+
+    const fetchData = async () => {
+        const users = await getAllUsers()
+        setUsers(users)
+    }
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    if(!users) {
+        return <></>
+    }
+
+    const filteredUsers = users.filter(item => {
+        return item.musicspacesUsername.toLowerCase().includes(searchBarValue.toLowerCase())
     })
 
     return (
@@ -21,17 +41,19 @@ const People = () => {
                 <div className={styles["user-grid"]}>
                     {filteredUsers.map((item, index) => {
                         return (
-                            <div key={index} className={styles["user-container"]}>
-                                <div className={styles["image-container"]}>
-                                    <Image 
-                                        src={item.image}
-                                        fill
-                                        alt="pfp"
-                                        style={{ borderRadius: '100%' }}
-                                    />
+                            <Link key={index} href={`/${item.musicspacesUsername}`}>
+                                <div className={styles["user-container"]}>
+                                    <div className={styles["image-container"]}>
+                                        <Image 
+                                            src={item.profilePicture}
+                                            fill
+                                            alt="pfp"
+                                            style={{ borderRadius: '100%' }}
+                                        />
+                                    </div>
+                                    <h2 className={styles.username}>{item.musicspacesUsername}</h2>
                                 </div>
-                                <h2 className={styles.username}>{item.username}</h2>
-                            </div>
+                            </Link>
                         )
                     })}
                 </div>
