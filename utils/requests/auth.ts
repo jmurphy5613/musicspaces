@@ -47,7 +47,7 @@ export const auth = async (router: NextRouter) => {
 	let URL = "https://accounts.spotify.com/authorize"
 	URL += "?client_id=" + process.env.NEXT_PUBLIC_CLIENT_ID
 	URL += "&response_type=code"
-	URL += "&redirect_uri=" + "https://musicspaces-backend-production.up.railway.app"
+	URL += "&redirect_uri=" + "https://musicspaces.vercel.app/"
 	URL += "&show_dialog=true"
 	URL += "&scope=user-read-private user-read-email user-top-read user-read-recently-played"
 	router.push(URL);
