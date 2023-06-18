@@ -5,6 +5,7 @@ import { userItem } from '../utils/data'
 import { useEffect, useState } from 'react'
 import { getAllUsers } from '../utils/requests/credentials'
 import { UserCredentials } from '../utils/types'
+import Link from 'next/link'
 
 const People = () => {
 
@@ -16,7 +17,6 @@ const People = () => {
 
     const fetchData = async () => {
         const users = await getAllUsers()
-        console.log(users)
         setUsers(users)
     }
 
@@ -41,17 +41,19 @@ const People = () => {
                 <div className={styles["user-grid"]}>
                     {filteredUsers.map((item, index) => {
                         return (
-                            <div key={index} className={styles["user-container"]}>
-                                <div className={styles["image-container"]}>
-                                    <Image 
-                                        src={item.profilePicture}
-                                        fill
-                                        alt="pfp"
-                                        style={{ borderRadius: '100%' }}
-                                    />
+                            <Link href={`/${item.musicspacesUsername}`}>
+                                <div key={index} className={styles["user-container"]}>
+                                    <div className={styles["image-container"]}>
+                                        <Image 
+                                            src={item.profilePicture}
+                                            fill
+                                            alt="pfp"
+                                            style={{ borderRadius: '100%' }}
+                                        />
+                                    </div>
+                                    <h2 className={styles.username}>{item.musicspacesUsername}</h2>
                                 </div>
-                                <h2 className={styles.username}>{item.musicspacesUsername}</h2>
-                            </div>
+                            </Link>
                         )
                     })}
                 </div>

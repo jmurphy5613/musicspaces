@@ -6,27 +6,27 @@ import Navbar from "../components/navbar/Navbar";
 import Image from "next/image";
 import 'aos/dist/aos.css';
 import AOS from 'aos'
-import { duplicatedUserItems } from "../utils/data";
+import { duplicatedUserItems, userItem } from "../utils/data";
 import UsernamePopup from "../components/username-popup/UsernamePopup";
 import { getUserByRegreshToken } from "../utils/requests/credentials";
 import { getUserInfoFromToken } from "../utils/requests/userData";
-import { UserInfo } from "../utils/types";
+import { UserCredentials, UserInfo } from "../utils/types";
+import { getAllUsers } from "../utils/requests/credentials";
 
 export default function Home() {
     const router = useRouter();
 
     const [showModal, setShowModal] = useState(false)
     const [userData, setUserData] = useState<UserInfo>()
+    const [registeredUsers, setRegisteredUsers] = useState<UserCredentials[]>()
 
     const getToken = async (code: string) => {
         const data = await getAccessToken(code as string)
-        console.log(data)
         localStorage.setItem('access_token', data.access_token)
         localStorage.setItem('refresh_token', data.refresh_token)
 
         //check if the user already exists in the database
         const user = await getUserByRegreshToken(data.refresh_token)
-        console.log(user)
         if (user) {
             router.push(`/${user.musicspacesUsername}`)
         } else {
@@ -50,13 +50,17 @@ export default function Home() {
         }
     }
 
-
-
+    const fetchUsers = async () => {
+        const users = await getAllUsers()
+        setRegisteredUsers(users)
+    }
 
     useEffect(() => {
-
         AOS.init()
+        fetchUsers()
+    }, [])
 
+    useEffect(() => {
         //get code router parameter and send it to getAccessToken
         if (router.isReady) {
             const code = router.query.code;
@@ -65,6 +69,8 @@ export default function Home() {
             }
         }
     }, [router.isReady])
+
+    if(!registeredUsers) return <></>
 
     return (
         <>
@@ -117,18 +123,18 @@ export default function Home() {
                     <h2 className={styles["registered-title"]}>Join these recent users:</h2>
                     <div className={styles["slider-container"]}>
                         <div className={styles["slider-animation"]}>
-                            {duplicatedUserItems.map((item, index) => {
+                            {duplicatedUserItems(registeredUsers).map((item, index) => {
                                 return (
                                     <div className={styles.user} key={index}>
                                         <div className={styles["profile-image-container"]}>
                                             <Image
                                                 fill 
-                                                src={item.image}
+                                                src={item.profilePicture}
                                                 alt="user-image"
                                                 style={{ borderRadius: '100%' }}
                                             />
                                         </div>
-                                        <h3 className={styles.username}>{item.username}</h3>
+                                        <h3 className={styles.username}>{item.musicspacesUsername}</h3>
                                     </div>
                                 )
                             })}
