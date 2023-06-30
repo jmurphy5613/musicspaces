@@ -1,6 +1,7 @@
 import axios from "axios"
 import { NextRouter } from "next/router"
 import { SpotifyAuthResponse } from "../types"
+import { url } from "../constants"
 
 export const getAccessToken = async (code: string | string[]): Promise<SpotifyAuthResponse> => {
 	let options = {
@@ -47,7 +48,7 @@ export const auth = async (router: NextRouter) => {
 	let URL = "https://accounts.spotify.com/authorize"
 	URL += "?client_id=" + process.env.NEXT_PUBLIC_CLIENT_ID
 	URL += "&response_type=code"
-	URL += "&redirect_uri=" + "https://musicspaces.vercel.app"
+	URL += "&redirect_uri=" + url
 	URL += "&show_dialog=true"
 	URL += "&scope=user-read-private user-read-email user-top-read user-read-recently-played"
 	router.push(URL);
