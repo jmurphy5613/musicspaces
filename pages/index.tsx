@@ -22,6 +22,7 @@ export default function Home() {
 
     const getToken = async (code: string) => {
         const data = await getAccessToken(code as string)
+        console.log(data)
         localStorage.setItem('access_token', data.access_token)
         localStorage.setItem('refresh_token', data.refresh_token)
 
