@@ -22,7 +22,7 @@ const UsernamePopup:React.FC<UsernamePopupProps> = ({ userData }) => {
             accessToken: localStorage.getItem('access_token') as string,
             refreshToken: localStorage.getItem('refresh_token') as string,
             accessTokenExpiration: new Date(Date.now() + 3600 * 1000),
-            profilePicture: userData.images[0].url ?? '',
+            profilePicture: userData.images[userData.images.length - 1].url ?? '',
         })
         router.push(`/${usernameEntered}`)
     }

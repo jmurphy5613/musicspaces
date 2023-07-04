@@ -8,7 +8,7 @@ import 'aos/dist/aos.css';
 import AOS from 'aos'
 import { duplicatedUserItems, userItem } from "../utils/data";
 import UsernamePopup from "../components/username-popup/UsernamePopup";
-import { getUserByRegreshToken } from "../utils/requests/credentials";
+import { getUserByRegreshToken, getUserBySpotifyUsername } from "../utils/requests/credentials";
 import { getUserInfoFromToken } from "../utils/requests/userData";
 import { UserCredentials, UserInfo } from "../utils/types";
 import { getAllUsers } from "../utils/requests/credentials";
@@ -22,17 +22,18 @@ export default function Home() {
 
     const getToken = async (code: string) => {
         const data = await getAccessToken(code as string)
-        console.log(data)
         localStorage.setItem('access_token', data.access_token)
         localStorage.setItem('refresh_token', data.refresh_token)
 
-        //check if the user already exists in the database
-        const user = await getUserByRegreshToken(data.refresh_token)
-        if (user) {
-            router.push(`/${user.musicspacesUsername}`)
+
+        //get the user's information
+        const userData = await getUserInfoFromToken(data.access_token)
+        const musicspacesUser = await getUserBySpotifyUsername(userData.id)
+        
+        if (musicspacesUser) {
+            router.push(`/${musicspacesUser.musicspacesUsername}`)
         } else {
             //get the spotify username and show the username popup
-            const userData = await getUserInfoFromToken(data.access_token)
             setUserData(userData)
             setShowModal(true)
         }

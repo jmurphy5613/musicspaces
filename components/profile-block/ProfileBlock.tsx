@@ -92,7 +92,7 @@ const ProfileBlock:React.FC<ProfileBlockProps> = ({ musicspacesUsername }) => {
                     <>
                         <div className={styles["image-container"]}>
                             <Image
-                                src={userInfo.images[0].url}
+                                src={userInfo.images[userInfo.images.length-1].url}
                                 alt='profile picture'
                                 fill
                                 style={{ borderRadius: '100%' }}
