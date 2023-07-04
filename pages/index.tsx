@@ -12,6 +12,7 @@ import { getUserByRegreshToken, getUserBySpotifyUsername } from "../utils/reques
 import { getUserInfoFromToken } from "../utils/requests/userData";
 import { UserCredentials, UserInfo } from "../utils/types";
 import { getAllUsers } from "../utils/requests/credentials";
+import { useMediaQuery } from "react-responsive";
 
 export default function Home() {
     const router = useRouter();
@@ -19,6 +20,10 @@ export default function Home() {
     const [showModal, setShowModal] = useState(false)
     const [userData, setUserData] = useState<UserInfo>()
     const [registeredUsers, setRegisteredUsers] = useState<UserCredentials[]>()
+
+
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 500px)' })
+
 
     const getToken = async (code: string) => {
         const data = await getAccessToken(code as string)
@@ -88,7 +93,7 @@ export default function Home() {
                         />
                     </div>
 
-                    <div className={styles["image-container"]}>
+                    <div className={styles["image-container"]} style={{ display: isTabletOrMobile ? 'none' : 'block' }}>
                         <Image 
                             src='/art/Vector.svg'
                             alt="vector"
