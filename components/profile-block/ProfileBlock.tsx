@@ -99,7 +99,7 @@ const ProfileBlock:React.FC<ProfileBlockProps> = ({ musicspacesUsername }) => {
                             />
                         </div>
                         <div className={styles["user-description"]}>
-                            <div style={{ display: 'flex', alignItems: 'flex-end', width: '50%' }}>
+                            <div className={styles.names}>
                                 <h1 className={styles.name}>{userInfo.display_name}</h1>
                                 <h3 className={styles.username}>{`@${userInfo.id}`}</h3>
                             </div>

@@ -50,6 +50,12 @@
     padding-bottom: 0.25rem;
 }
 
+.names {
+    display: flex;
+    align-items: flex-end; 
+    width: 50%;
+}
+
 .following-stat {
     font-family: 'Outfit';
     font-weight: 400;
@@ -126,3 +132,59 @@
     display: flex;
     margin-top: 1rem;
 }
+
+@media (max-width: 500px) {
+    .user-container {
+        flex-direction: column;
+        padding: 1rem;
+        height: auto;
+    }
+
+    .user-info-container {
+        width: 100%;
+        display: flex;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .user-description {
+        width: 100%;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        height: auto;
+    }
+
+    .content-container {
+        flex-direction: column;
+        height: 50vh;
+    }
+
+    .user-facts {
+        display: none;
+    }
+
+    .names {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .following-stat {
+        display: none;
+    }
+
+    .name {
+        margin: 0;
+        width: 100%;
+    }
+
+    .username {
+        margin: 0;
+        width: 100%;
+    }
+}
+    
