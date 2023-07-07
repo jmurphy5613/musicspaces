@@ -18,10 +18,10 @@
 @media (max-width: 500px) {
     .content-container {
         flex-direction: column;
-        height: 200vh;
     }
 
     .container {
         padding: 0;
+        min-height: 150vh;
     }
 }
