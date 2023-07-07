@@ -33,3 +33,13 @@
     background-color: #A7B2FF;
     margin-top: 0.5rem;
 }
+
+@media (max-width: 500px) {
+    .container {
+        width: 100%;
+        position: inherit;
+        display: flex;
+        justify-content: center;
+        margin: 1rem;
+    }
+}

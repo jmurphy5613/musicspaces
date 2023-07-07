@@ -69,6 +69,8 @@
 
     .navigation-item {
         width: 100%;
+        display: flex;
+        justify-content: center;
     }
 
     .activated {
@@ -81,6 +83,6 @@
 
     .navigation-image-container {
         height: 75%;
-        width: 3.5rem;
+        width: 3rem;
     }
 }

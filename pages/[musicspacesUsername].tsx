@@ -37,12 +37,12 @@ const Profile = () => {
                 <ProfileBlock musicspacesUsername={username} />
                 <div className={styles["content-container"]}>
                     <ProfileTabs currentTab={currentTab} setUserTab={setUserTab} />
-                    {/* {
+                    {
                         currentTab == 'Top Songs' ? <TopSongs musicspacesUsername={username} /> : <></>
                     }
                     {
                         currentTab == 'Top Artists' ? <TopArtists musicspacesUsername={username} /> : <></>
-                    } */}
+                    }
                 </div>
             </div>
         </>

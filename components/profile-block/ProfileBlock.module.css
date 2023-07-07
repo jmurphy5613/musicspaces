@@ -138,6 +138,7 @@
         flex-direction: column;
         padding: 1rem;
         height: auto;
+        margin: 0;
     }
 
     .user-info-container {
@@ -185,6 +186,10 @@
     .username {
         margin: 0;
         width: 100%;
+    }
+
+    .open-in-spotify {
+        display: none;
     }
 }
     
