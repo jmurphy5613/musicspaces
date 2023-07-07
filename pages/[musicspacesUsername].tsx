@@ -35,15 +35,15 @@ const Profile = () => {
             <Navbar />
             <div className={styles.container}>
                 <ProfileBlock musicspacesUsername={username} />
-                {/* <div className={styles["content-container"]}>
+                <div className={styles["content-container"]}>
                     <ProfileTabs currentTab={currentTab} setUserTab={setUserTab} />
-                    {
+                    {/* {
                         currentTab == 'Top Songs' ? <TopSongs musicspacesUsername={username} /> : <></>
                     }
                     {
                         currentTab == 'Top Artists' ? <TopArtists musicspacesUsername={username} /> : <></>
-                    }
-                </div> */}
+                    } */}
+                </div>
             </div>
         </>
 
