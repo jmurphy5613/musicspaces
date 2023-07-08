@@ -16,7 +16,7 @@ const UsernamePopup:React.FC<UsernamePopupProps> = ({ userData }) => {
     const router = useRouter()
 
     const handleContinue = async () => {
-        createUser({
+        await createUser({
             spotifyUsername: userData.id,
             musicspacesUsername: usernameEntered,
             accessToken: localStorage.getItem('access_token') as string,
