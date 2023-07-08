@@ -55,7 +55,7 @@
 .navigation-label {
     font-family: 'Outfit';
     font-weight: 400;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: white;
 }
 
@@ -65,6 +65,10 @@
         height: 5rem;
         flex-direction: row;
         justify-content: space-between;
+    }
+
+    .navigation-label {
+        font-size: 1rem;
     }
 
     .navigation-item {
