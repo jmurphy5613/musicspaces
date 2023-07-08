@@ -104,6 +104,7 @@
         width: 100%;
         padding-left: 0;
         padding-right: 0;
+        overflow: hidden;
     }
 
     .top-songs-list {
@@ -115,12 +116,7 @@
     }
 
     .song-item {
-        min-width: 100%;
-    }
-
-    .icon-container {
-        min-height: 2rem;
-        min-width: 2rem;
+        width: 100%;
     }
 
     .name {
@@ -133,5 +129,11 @@
         font-size: 0.8rem;
         white-space: nowrap;
         overflow: hidden;
+    }
+
+    .icon-container {
+    }
+
+    .number {
     }
 }
