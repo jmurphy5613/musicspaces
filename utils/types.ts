@@ -5,7 +5,8 @@ export interface Artist {
         url: string,
         height: number,
         width: number
-    }>
+    }>,
+    genres: Array<string>
 }
 
 export interface Track {
@@ -17,7 +18,8 @@ export interface Track {
         }>
     },
     artists: Array<{
-        name: string
+        name: string,
+        genres: Array<string>
     }>,
     name: string,
     duration_ms: number,

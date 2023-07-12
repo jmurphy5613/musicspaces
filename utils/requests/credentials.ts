@@ -55,5 +55,5 @@ export const getUserBySpotifyUsername = async (spotifyUsername: string): Promise
         },
     }
     const res = await axios(options)
-    return res.data.response
+    return res.data
 }

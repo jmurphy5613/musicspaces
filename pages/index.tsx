@@ -34,11 +34,13 @@ export default function Home() {
         //get the user's information
         const userData = await getUserInfoFromToken(data.access_token)
         const musicspacesUser = await getUserBySpotifyUsername(userData.id)
-        
+        console.log(userData.id)
+
         if (musicspacesUser) {
+            console.log("true")
             router.push(`/${musicspacesUser.musicspacesUsername}`)
         } else {
-            //get the spotify username and show the username popup
+            console.log("false")
             setUserData(userData)
             setShowModal(true)
         }
@@ -73,6 +75,7 @@ export default function Home() {
             const code = router.query.code;
             if (code) {
                 getToken(code as string)
+                console.log("getting token!")
             }
         }
     }, [router.isReady])

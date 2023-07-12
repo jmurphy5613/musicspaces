@@ -3,7 +3,8 @@ import Navbar from '../components/navbar/Navbar';
 import { useEffect, useRef } from 'react';
 import Chart, { ChartConfiguration, ChartItem } from 'chart.js/auto';
 import { TreemapController, TreemapElement } from 'chartjs-chart-treemap';
-import { getRecentlyPlayed, getTopSongs } from '../utils/requests/userData';
+import { getRecentlyPlayed, getTopArtists, getTopSongs } from '../utils/requests/userData';
+import { topArtistsToTreemap } from '../utils/conversions';
 
 Chart.register(TreemapController, TreemapElement);
 
@@ -20,10 +21,15 @@ const Charts = () => {
     const chartRef = useRef<Chart | null>(null); // Ref to store the chart instance
 
     useEffect(() => {
-        if (!canvas.current) return;
-
         const setUpMap = async () => {
-            const ctx = canvas.current.getContext('2d');
+            if(!canvas.current) return;
+
+            const spotifyData = await getTopArtists('short_term', 'jmurphy5613')
+            const mapData = topArtistsToTreemap(spotifyData)
+            console.log(mapData)
+
+
+            const ctx = canvas.current.getContext('2d') as ChartItem<'treemap'>;
 
             function colorFromRaw(ctx: any, border: boolean) {
                 if (ctx.type !== 'data') {
@@ -31,7 +37,6 @@ const Charts = () => {
                 }
                 const value = ctx.raw.v;
                 let alpha = value / 9;
-                console.log(alpha);
                 const color = '167, 178, 255';
                 return 'rgba(' + color + ', ' + alpha + ')';
             }
@@ -42,13 +47,28 @@ const Charts = () => {
                     datasets: [
                         {
                             label: 'My First dataset',
-                            tree: data,
+                            tree: mapData,
                             key: 'value',
-                            groups: ['category'],
+                            groups: ['genre'],
                             borderColor: 'rgba(167, 178, 255)',
                             // borderWidth: 1,
                             spacing: -0.5, // Animations look better when overlapping a little
                             backgroundColor: (ctx: CanvasRenderingContext2D) => colorFromRaw(ctx, true),
+                            labels: {
+                                display: true,
+                                font: {
+                                    size: '10rem',
+                                    family: 'Outfit'
+                                },
+                                align: 'center',
+                                color: 'white',
+                                // formatter(ctx) {
+                                //     if (ctx.type !== 'data') {
+                                //       return;
+                                //     }
+                                //     return [ctx.raw.v];
+                                // },
+                            }
                         },
                     ],
                 },
@@ -80,6 +100,7 @@ const Charts = () => {
                 }
             };
         };
+
 
         setUpMap()
     }, []);
