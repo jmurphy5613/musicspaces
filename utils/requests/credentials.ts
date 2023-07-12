@@ -45,3 +45,15 @@ export const getUserByRegreshToken = async (refreshToken: string): Promise<UserC
     const res = await axios(options)
     return res.data.response
 }
+
+export const getUserBySpotifyUsername = async (spotifyUsername: string): Promise<UserCredentials> => {
+    let options = {
+        url: `${apiURL}/users/get-user-by-spotify-username/${spotifyUsername}`,
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }
+    const res = await axios(options)
+    return res.data
+}

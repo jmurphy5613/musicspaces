@@ -1,5 +1,5 @@
 .container {
-    height: 50vh;
+    min-height: 50vh;
     width: 80%;
     display: flex;
     align-items: center;
@@ -70,4 +70,45 @@
     width: 10rem;
     position: relative;
     margin: 1rem 0 1rem 0;
+}
+
+
+@media (max-width: 500px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        overflow: hidden;
+    }
+
+    .top-artist-list {
+        width: 100%;
+    }
+
+    .top-artist {
+        display: none;
+    }
+
+    .artist-item {
+        width: 100%;
+    }
+
+    .name {
+        font-size: 1rem;
+
+    }
+
+    .artist {
+        font-size: 0.8rem;
+
+    }
+
+    .icon-container {
+        min-width: 2rem;
+    }
+
+    .number {
+        min-width: 1.25rem;
+    }
 }

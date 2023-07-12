@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
+import { apiURL } from '../../utils/constants'
 
 type Data = {
   response: any
@@ -10,16 +11,8 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
     const options = {
-        url: 'https://accounts.spotify.com/api/token',
+        url: `${apiURL}/users/getAccessToken/${req.query.code}`,
         method: 'POST',
-        headers: {
-            'Authorization': 'Basic ' + (new Buffer(process.env.NEXT_PUBLIC_CLIENT_ID + ':' + process.env.CLIENT_SECRET).toString('base64'))
-        },
-        params: {
-            code: req.query.code,
-            redirect_uri: 'https://musicspaces.vercel.app',
-            grant_type: 'authorization_code'
-        }
     }
 
     const makeRequest = async () => {

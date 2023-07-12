@@ -50,7 +50,7 @@ const TopSongs:React.FC<TopSongsProps> = ({ musicspacesUsername }) => {
                                     style={{ borderRadius: '5px' }}
                                 />
                             </div>
-                            <span style={{ display: 'flex', alignItems: 'flex-end' }}>
+                            <span style={{ display: 'flex', alignItems: 'flex-end', whiteSpace: 'nowrap', overflow: 'hidden' }}>
                                 <h2 className={styles.name}>{song.name}</h2>
                                 <h3 className={styles.artist}>{song.artists[0].name}</h3>
                             </span>

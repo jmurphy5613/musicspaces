@@ -1,5 +1,5 @@
 .container {
-    height: 50vh;
+    min-height: 50vh;
     width: 80%;
     display: flex;
     align-items: center;
@@ -96,4 +96,44 @@
 
 .purple {
     color: #A7B2FF;
+}
+
+@media (max-width: 500px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        overflow: hidden;
+    }
+
+    .top-songs-list {
+        width: 100%;
+    }
+
+    .top-song {
+        display: none;
+    }
+
+    .song-item {
+        width: 100%;
+    }
+
+    .name {
+        font-size: 1rem;
+
+    }
+
+    .artist {
+        font-size: 0.8rem;
+
+    }
+
+    .icon-container {
+        min-width: 2rem;
+    }
+
+    .number {
+        min-width: 1.25rem;
+    }
 }

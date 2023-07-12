@@ -1,4 +1,4 @@
-import { RecentlyPlayedTrack, Track } from "./types"
+import { Artist, RecentlyPlayedTrack, Track } from "./types"
 
 export const durationToSpotfyFormat = (duration: string) => {
     if(duration === '4 weeks') return 'short_term'
@@ -31,4 +31,17 @@ export const recentlyPlayedToStats = (recentlyPlayed: Array<RecentlyPlayedTrack>
         uniqueArtists: uniqueArtists.size,
         totalTracks: recentlyPlayed.length
     }
+}
+
+export const topArtistsToTreemap = (artsits: Array<Artist>) => {
+    console.log(artsits.length)
+    let data = []
+    for(const artist of artsits) {
+        if(!artist.genres[0]) continue
+        data.push({
+            value: 1,
+            genre: artist.genres[0],
+        })
+    }
+    return data
 }

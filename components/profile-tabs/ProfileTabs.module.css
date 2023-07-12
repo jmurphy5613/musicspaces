@@ -55,6 +55,38 @@
 .navigation-label {
     font-family: 'Outfit';
     font-weight: 400;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: white;
+}
+
+@media (max-width: 500px) {
+    .navigation {
+        width: 100%;
+        height: 5rem;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .navigation-label {
+        font-size: 1rem;
+    }
+
+    .navigation-item {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .activated {
+        width: 100%;
+    }
+
+    .overlay {
+        width: 100%;
+    }
+
+    .navigation-image-container {
+        height: 75%;
+        width: 3rem;
+    }
 }

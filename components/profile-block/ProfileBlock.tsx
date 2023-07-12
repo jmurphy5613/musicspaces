@@ -92,14 +92,14 @@ const ProfileBlock:React.FC<ProfileBlockProps> = ({ musicspacesUsername }) => {
                     <>
                         <div className={styles["image-container"]}>
                             <Image
-                                src={userInfo.images[0].url}
+                                src={userInfo.images[userInfo.images.length-1].url}
                                 alt='profile picture'
                                 fill
                                 style={{ borderRadius: '100%' }}
                             />
                         </div>
                         <div className={styles["user-description"]}>
-                            <div style={{ display: 'flex', alignItems: 'flex-end', width: '50%' }}>
+                            <div className={styles.names}>
                                 <h1 className={styles.name}>{userInfo.display_name}</h1>
                                 <h3 className={styles.username}>{`@${userInfo.id}`}</h3>
                             </div>

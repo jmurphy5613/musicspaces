@@ -8,10 +8,11 @@ import 'aos/dist/aos.css';
 import AOS from 'aos'
 import { duplicatedUserItems, userItem } from "../utils/data";
 import UsernamePopup from "../components/username-popup/UsernamePopup";
-import { getUserByRegreshToken } from "../utils/requests/credentials";
+import { getUserByRegreshToken, getUserBySpotifyUsername } from "../utils/requests/credentials";
 import { getUserInfoFromToken } from "../utils/requests/userData";
 import { UserCredentials, UserInfo } from "../utils/types";
 import { getAllUsers } from "../utils/requests/credentials";
+import { useMediaQuery } from "react-responsive";
 
 export default function Home() {
     const router = useRouter();
@@ -20,18 +21,26 @@ export default function Home() {
     const [userData, setUserData] = useState<UserInfo>()
     const [registeredUsers, setRegisteredUsers] = useState<UserCredentials[]>()
 
+
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 500px)' })
+
+
     const getToken = async (code: string) => {
         const data = await getAccessToken(code as string)
         localStorage.setItem('access_token', data.access_token)
         localStorage.setItem('refresh_token', data.refresh_token)
 
-        //check if the user already exists in the database
-        const user = await getUserByRegreshToken(data.refresh_token)
-        if (user) {
-            router.push(`/${user.musicspacesUsername}`)
+
+        //get the user's information
+        const userData = await getUserInfoFromToken(data.access_token)
+        const musicspacesUser = await getUserBySpotifyUsername(userData.id)
+        console.log(userData.id)
+
+        if (musicspacesUser) {
+            console.log("true")
+            router.push(`/${musicspacesUser.musicspacesUsername}`)
         } else {
-            //get the spotify username and show the username popup
-            const userData = await getUserInfoFromToken(data.access_token)
+            console.log("false")
             setUserData(userData)
             setShowModal(true)
         }
@@ -66,6 +75,7 @@ export default function Home() {
             const code = router.query.code;
             if (code) {
                 getToken(code as string)
+                console.log("getting token!")
             }
         }
     }, [router.isReady])
@@ -86,7 +96,7 @@ export default function Home() {
                         />
                     </div>
 
-                    <div className={styles["image-container"]}>
+                    <div className={styles["image-container"]} style={{ display: isTabletOrMobile ? 'none' : 'block' }}>
                         <Image 
                             src='/art/Vector.svg'
                             alt="vector"
